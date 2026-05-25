@@ -1,0 +1,63 @@
+import {z} from "zod";
+import {Gender, Role, UserType} from "../generated/prisma/enums";
+
+export const changeUserPasswordSchema = z.object({
+    email: z.string().min(3, {message: "Email must be provided"}).regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+    password: z.string().min(3, {message: "Password must be provided"}),
+    newPassword: z.string().min(3, {message: "New Password must be provided"}),
+    confirmPassword: z.string().min(3, {message: "Confirm Password must be provided"}),
+}).refine((values) => values.newPassword.normalize() === values.newPassword.normalize(),
+    {
+        message: "Passwords do not match",
+        path: ["confirmPassword"], // Associates the error with the confirmPassword field
+    });
+
+export type ChangeUserPassword = z.infer<typeof changeUserPasswordSchema>
+
+
+export const changeUserRoleSchema = z.object({
+    email: z.string().min(3, {message: "Email must be provided"}).regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+});
+
+export type ChangeUserRole = z.infer<typeof changeUserRoleSchema>
+
+export const loginUserSchema = z.object({
+    email: z.string().min(3, {message: "Email must be provided"}).regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+    password: z.string().min(3, {message: "Password must be provided"}),
+});
+
+export type LoginUser = z.infer<typeof loginUserSchema>
+
+export const signupUserSchema = z.object({
+    name: z.string().min(3, {message: "Name must be provided"}),
+    email: z.string().min(3, {message: "Email must be provided"}).regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+    phone: z.string().min(3, {message: "Phone must be provided"}),
+    image: z.string().min(3, {message: "Image must be provided"}),
+    gender: z.enum(Gender),
+    role: z.enum(Role).optional(),
+    userType: z.enum(UserType).optional(),
+    dateOfBirth: z.string().min(3, {message: "Date of birth must be provided"}),
+    password: z.string().min(3, {message: "Password must be provided"}),
+    confirmPassword: z.string().min(3, {message: "Confirm Password must be provided"}),
+}).refine((values) => values.password.normalize() === values.confirmPassword.normalize(),
+    {
+        message: "Passwords do not match",
+        path: ["confirmPassword"], // Associates the error with the confirmPassword field
+    });
+
+export type SignupUser = z.infer<typeof signupUserSchema>
+
+export const editProfileUserSchema = z.object({
+    name: z.string().min(3, {message: "Email must be provided"}),
+    email: z.string().min(3, {message: "Email must be provided"}).regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
+    phone: z.string().min(3, {message: "Phone must be provided"}),
+    image: z.string().min(3, {message: "Image must be provided"}),
+    gender: z.enum(Gender),
+    dateOfBirth: z.string().min(3, {message: "Date of birth must be provided"}),
+    role: z.enum(Role).optional(),
+    userType: z.enum(UserType).optional(),
+    password: z.string().min(3, {message: "Password must be provided"}),
+});
+
+export type EditUserProfile = z.infer<typeof editProfileUserSchema>
+
