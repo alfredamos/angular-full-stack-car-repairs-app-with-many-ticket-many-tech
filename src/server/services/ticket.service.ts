@@ -1,10 +1,10 @@
 import { TicketUncheckedCreateInput, TicketUncheckedUpdateInput } from "src/generated/prisma/models";
-import {TicketResponse, toTicketResponse} from "src/models/ticketResponse.model";
 import {ITicketService} from "./ITicket.service";
 import {prisma} from "../db/prisma.db";
 import {TicketWithCustomer} from "../../models/ticketWithCustomer";
 import {createError} from "h3";
 import {StatusCodes} from "http-status-codes";
+import {TicketResponse, toTicketResponse} from "../../models/ticketResponse.model";
 
 class TicketService implements ITicketService {
     async createTicket(request: TicketUncheckedCreateInput): Promise<TicketResponse> {

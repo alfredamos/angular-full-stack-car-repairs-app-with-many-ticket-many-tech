@@ -1,9 +1,9 @@
-import { TechnicianUncheckedCreateInput, TechnicianUncheckedUpdateInput } from "src/generated/prisma/models";
-import {TechnicianResponse, toTechnicianResponse} from "src/models/technicianResp.model";
 import {ITechnicianService} from "./ITech.service";
 import {prisma} from "../db/prisma.db";
 import {createError} from "h3";
 import {StatusCodes} from "http-status-codes";
+import {TechnicianUncheckedCreateInput, TechnicianUncheckedUpdateInput} from "../../generated/prisma/models/Technician";
+import {TechnicianResponse, toTechnicianResponse} from "../../models/technicianResp.model";
 
 class TechnicianService implements ITechnicianService {
     async createTechnician(request: TechnicianUncheckedCreateInput): Promise<TechnicianResponse> {

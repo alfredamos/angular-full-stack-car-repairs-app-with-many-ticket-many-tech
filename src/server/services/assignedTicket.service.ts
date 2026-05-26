@@ -3,7 +3,7 @@ import {
     AssignedTicketRequest,
     AssignedTicketResponse,
     toAssignedTicketResponse
-} from "src/models/assignedTicketResponse.model";
+} from "../../models/assignedTicketResponse.model";
 import {IAssignedTicketService} from "./IAssignedTicket.service";
 import {prisma} from "../db/prisma.db";
 import {createError} from "h3";

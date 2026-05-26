@@ -1,8 +1,8 @@
-import { TokenUncheckedCreateInput } from "src/generated/prisma/models";
 import { ResponseMessage } from "../utils/responseMessage";
 import {ITokenService} from "./IToken.service";
 import {prisma} from "../db/prisma.db";
 import {StatusCodes} from "http-status-codes";
+import {TokenUncheckedCreateInput} from "../../generated/prisma/models/Token";
 
 class TokenService implements ITokenService {
     async createToken(token: TokenUncheckedCreateInput): Promise<void> {

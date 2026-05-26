@@ -1,10 +1,10 @@
-import { CustomerUncheckedCreateInput, CustomerUncheckedUpdateInput } from "src/generated/prisma/models";
-import {CustomerResponse, toCustomerResponse} from "src/models/customerResp.model";
 import {ICustomerService} from "./ICustomer.service";
 import {prisma} from "../db/prisma.db";
 import {createError} from "h3";
 import {StatusCodes} from "http-status-codes";
 import {CustomerWithUser} from "../../models/customerWithUser.model";
+import {CustomerResponse, toCustomerResponse} from "../../models/customerResp.model";
+import {CustomerUncheckedCreateInput, CustomerUncheckedUpdateInput} from "../../generated/prisma/models/Customer";
 
 class CustomerService implements ICustomerService {
     async changeCustomerStatus(id: string): Promise<CustomerResponse> {
