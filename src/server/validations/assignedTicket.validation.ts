@@ -1,5 +1,5 @@
 import {z} from 'zod'
-import {Status} from "../generated/prisma/enums";
+import {Status} from "../../generated/prisma/enums";
 
 export const assignedTicketCreateSchema = z.object({
     ticketId: z.string().min(1, {message: 'Ticket Id cannot be empty.'}),
