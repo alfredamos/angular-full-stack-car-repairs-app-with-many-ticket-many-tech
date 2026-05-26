@@ -1,11 +1,11 @@
 import {createError, defineEventHandler} from "h3";
-import {assignedTicketService} from "../../../services/assignedTicket.service";
 import {HttpError} from "http-errors"
+import {assignedTicketService} from "../../../../services/assignedTicket.service";
 
 export default defineEventHandler(async (event) => {
     try {
-        //----> Fetch all tickets.
-        return await assignedTicketService.getAllAssignedTicket();
+        //----> Fetch incompleted tickets.
+        return await assignedTicketService.getInCompletedAssignedTicket();
     }catch (err){
         const error = err as HttpError
         throw createError({statusCode: error?.statusCode, statusText: error?.message})

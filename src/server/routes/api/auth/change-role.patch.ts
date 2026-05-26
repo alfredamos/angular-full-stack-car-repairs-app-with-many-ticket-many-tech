@@ -14,6 +14,6 @@ export default defineEventHandler(async (event) => {
 
     }catch (err){
         const error = err as HttpError;
-        throw createError({statusCode: StatusCodes.INTERNAL_SERVER_ERROR, statusText: error.message});
+        throw createError({statusCode: error?.statusCode, statusText: error?.message});
     }
 })
