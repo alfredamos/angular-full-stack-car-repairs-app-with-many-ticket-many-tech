@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => ({
   build: {
     target: ['es2020'],
   },
+  server: {
+    port: 5000, // Change this to your desired port
+  },
   resolve: {
     mainFields: ['module'],
   },

@@ -263,7 +263,7 @@ export class AuthService implements IAuthService {
     }
 
     private async generateToken(tokenJwt: TokenJwt, expiresIn: number){
-        return jwt.sign(tokenJwt, process.env['JWT_SECRET'] as string, {expiresIn});
+        return jwt.sign(tokenJwt, process.env['JWT_TOKEN_KEY'] as string, {expiresIn});
     }
 
     private validateUserToken(token: string): JwtPayload{
@@ -273,7 +273,7 @@ export class AuthService implements IAuthService {
         }
 
         //----> Validate user token.
-        const jwtPayload = jwt.verify(token, process.env['JWT_SECRET'] as string) as JwtPayload;
+        const jwtPayload = jwt.verify(token, process.env['JWT_TOKEN_KEY'] as string) as JwtPayload;
 
         //----> Check for null jwtPayload or expired jwt.
         if (!jwtPayload || jwtPayload.expiration < Date.now()){
