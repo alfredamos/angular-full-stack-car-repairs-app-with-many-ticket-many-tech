@@ -1,20 +1,19 @@
 import { PrismaMariaDb } from '@prisma/adapter-mariadb';
 import dotenv from "dotenv";
-// @ts-ignore
-import {PrismaClient} from "../generated/prisma/client";
+import {PrismaClient} from "../../generated/prisma/client";
 
 
 dotenv.config({override: true,quiet: true});
 
 function adapterParameters(){
     return {
-        user: process.env.USER,
-        password: process.env.PASSWORD,
-        host: process.env.HOST,
-        port: process.env.MYSQL_PORT,
-        database: process.env.DATABASE,
-        connectionLimit: parseInt(process.env.CONNECTION_LIMIT as string),
-        connectTimeout: parseInt(process.env.CONNECT_TIMEOUT as string),
+        user: process.env['USER'],
+        password: process.env['PASSWORD'],
+        host: process.env['HOST'],
+        port: process.env['MYSQL_PORT'],
+        database: process.env['DATABASE'],
+        connectionLimit: parseInt(process.env['CONNECTION_LIMIT'] as string),
+        connectTimeout: parseInt(process.env['CONNECT_TIMEOUT'] as string),
 
     }
 }
@@ -45,7 +44,7 @@ export const prisma =
     });
 
 
-if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+if (process.env['NODE_ENV'] !== "production") globalForPrisma.prisma = prisma;
 
 
 

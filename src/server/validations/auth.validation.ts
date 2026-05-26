@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {Gender, Role, UserType} from "../generated/prisma/enums";
+import {Gender, Role, UserType} from "../../generated/prisma/enums";
 
 export const changeUserPasswordSchema = z.object({
     email: z.string().min(3, {message: "Email must be provided"}).regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/),
