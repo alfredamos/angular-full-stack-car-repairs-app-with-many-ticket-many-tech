@@ -74,7 +74,7 @@ CREATE TABLE `users` (
     `password` VARCHAR(255) NOT NULL,
     `gender` ENUM('Female', 'Male') NOT NULL DEFAULT 'Male',
     `role` ENUM('Admin', 'User') NOT NULL DEFAULT 'User',
-    `userType` ENUM('Customer', 'Technician') NOT NULL DEFAULT 'Technician',
+    `userType` ENUM('Customer', 'Technician') NOT NULL DEFAULT 'Customer',
     `image` VARCHAR(255) NOT NULL,
     `dateOfBirth` DATETIME(3) NOT NULL,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),

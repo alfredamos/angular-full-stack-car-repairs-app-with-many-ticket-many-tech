@@ -1,6 +1,6 @@
-import {Role, UserType} from "../generated/prisma/enums";
+import {Role, UserType} from "../../generated/prisma/enums";
 import {SignupUser} from "../validations/auth.validation";
-import {UserCreateInput} from "../generated/prisma/models/User";
+import {UserCreateInput} from "../../generated/prisma/models/User";
 
 export function fromSignupUserToUser(signupUser: SignupUser):UserCreateInput{
     return{

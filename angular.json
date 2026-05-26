@@ -33,7 +33,7 @@
           "defaultConfiguration": "development",
           "options": {
             "buildTarget": "my-app:build",
-            "port": 5173
+            "port": 5000
           },
           "configurations": {
             "development": {
@@ -50,5 +50,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5d476da8-5682-4f9c-9f4f-394057c119f6"
   }
 }

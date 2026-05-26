@@ -1,4 +1,4 @@
-import {Role, UserType} from "../generated/prisma/enums";
+import {Role, UserType} from "../../generated/prisma/enums";
 
 export const emptyTokenJwt = {
     id: "",
