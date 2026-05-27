@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
         //----> Delete ticket with the giving tech id and ticket id.
         return await assignedTicketService.deleteAssignedTicketById(techId, ticketId);
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
         //----> Insert the customer into the database.
         return await customerService.createCustomer(customer);
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

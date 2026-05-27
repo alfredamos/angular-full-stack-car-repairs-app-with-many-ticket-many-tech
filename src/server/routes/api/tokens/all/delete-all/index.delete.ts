@@ -8,7 +8,7 @@ export default defineEventHandler(async (_event) => {
         return await tokenService.deleteAllInvalidTokens();
 
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

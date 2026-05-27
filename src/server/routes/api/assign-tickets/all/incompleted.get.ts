@@ -7,7 +7,7 @@ export default defineEventHandler(async (_event) => {
         //----> Fetch incompleted tickets.
         return await assignedTicketService.getInCompletedAssignedTicket();
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

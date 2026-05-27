@@ -11,10 +11,8 @@ export default defineEventHandler(async (event) => {
 
         //----> Fetch tickets with the giving customer id.
         return await ticketService.getTicketByCustomerId(customerId);
-
-
     }catch (err){
         const error = err as HttpError;
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

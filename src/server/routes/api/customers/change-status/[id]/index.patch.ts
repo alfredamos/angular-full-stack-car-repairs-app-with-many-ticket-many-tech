@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         //----> Change customer status.
         return await customerService.changeCustomerStatus(id);
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

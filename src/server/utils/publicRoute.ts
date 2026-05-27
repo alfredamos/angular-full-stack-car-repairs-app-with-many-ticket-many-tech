@@ -1,5 +1,3 @@
-import { Request } from "express";
-
 const publicRoutes = [
    "/",
     "/login",
@@ -12,4 +10,4 @@ const publicRoutes = [
     "/api/auth/signup",
 ]
 
-export const isPublicRoute = (request: Request) => publicRoutes.includes(request.url);
+export const isPublicRoute = (route: string) => publicRoutes.includes(route);

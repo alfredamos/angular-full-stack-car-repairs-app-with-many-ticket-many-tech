@@ -10,9 +10,8 @@ export default defineEventHandler(async (event) => {
 
         //----> Insert the ticket in db.
         return await ticketService.createTicket(ticket);
-
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

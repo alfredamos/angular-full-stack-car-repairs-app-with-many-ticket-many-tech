@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         //----> Fetch technicians by specialty.
         return await techService.getTechnicianBySpecialty(specialty);
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

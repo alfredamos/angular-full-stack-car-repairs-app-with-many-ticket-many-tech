@@ -8,6 +8,6 @@ export default defineEventHandler(async (_event) => {
         return await assignedTicketService.getAllAssignedTicket();
     }catch (err){
         const error = err as HttpError;
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

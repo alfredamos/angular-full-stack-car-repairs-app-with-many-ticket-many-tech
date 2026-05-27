@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         //----> Delete technician with the giving id.
         return await techService.deleteTechnicianById(id);
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

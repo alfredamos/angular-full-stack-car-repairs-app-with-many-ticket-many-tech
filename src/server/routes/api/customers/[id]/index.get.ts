@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
         //----> Fetch customer with the giving id.
         return await customerService.getCustomerById(id);
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

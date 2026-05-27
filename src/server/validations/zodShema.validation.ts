@@ -1,9 +1,9 @@
 import { StatusCodes } from "http-status-codes";
-import { ZodType as ZodSchema } from "zod";
+import { ZodType } from "zod";
 import catchError from "http-errors";
 
 export function validateWithZodSchema<T>(
-    schema: ZodSchema<T>,
+    schema: ZodType<T>,
     data: unknown
 ): T {
     const result = schema.safeParse(data);

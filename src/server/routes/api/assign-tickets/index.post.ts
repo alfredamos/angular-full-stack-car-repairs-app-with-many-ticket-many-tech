@@ -20,6 +20,6 @@ export default defineEventHandler(async (event) => {
         return await assignedTicketService.createAssignedTicket(ticket);
     }catch (err){
         const error = err as HttpError;
-        throw createError({statusCode: error?.statusCode, message: error?.message})
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })
