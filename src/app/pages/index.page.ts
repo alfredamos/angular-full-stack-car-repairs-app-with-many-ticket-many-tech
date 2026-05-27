@@ -4,9 +4,9 @@ import { AnalogWelcome } from './analog-welcome';
 
 @Component({
   selector: 'app-home',
-  imports: [AnalogWelcome],
+  imports: [],
   template: `
-     <app-analog-welcome/>
+    <div>Home Page!</div>
   `,
 })
 export default class Home {}

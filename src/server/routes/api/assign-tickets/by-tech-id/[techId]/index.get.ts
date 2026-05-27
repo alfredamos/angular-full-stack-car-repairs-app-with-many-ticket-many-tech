@@ -1,9 +1,13 @@
 import {createError, defineEventHandler, getRouterParam} from "h3";
 import {HttpError} from "http-errors"
 import {assignedTicketService} from "../../../../../services/assignedTicket.service";
+import {adminAuthorization} from "../../../../../utils/adminAuthorization";
 
 export default defineEventHandler(async (event) => {
     try {
+        //----> Check for admin role.
+        adminAuthorization(event);
+
         //----> Get the ticket id from the request parameters.
         const techId = getRouterParam(event, 'techId') as string;
 

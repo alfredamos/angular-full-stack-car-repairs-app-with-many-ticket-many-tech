@@ -83,7 +83,7 @@ export type TechnicianAggregateArgs<ExtArgs extends runtime.Types.Extensions.Int
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Technicians to fetch.
+   * Determine the order of TechniciansPage to fetch.
    */
   orderBy?: Prisma.TechnicianOrderByWithRelationInput | Prisma.TechnicianOrderByWithRelationInput[]
   /**
@@ -95,19 +95,19 @@ export type TechnicianAggregateArgs<ExtArgs extends runtime.Types.Extensions.Int
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Technicians from the position of the cursor.
+   * Take `±n` TechniciansPage from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Technicians.
+   * Skip the first `n` TechniciansPage.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned Technicians
+   * Count returned TechniciansPage
   **/
   _count?: true | TechnicianCountAggregateInputType
   /**
@@ -616,15 +616,15 @@ export interface TechnicianDelegate<ExtArgs extends runtime.Types.Extensions.Int
   findFirstOrThrow<T extends TechnicianFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, TechnicianFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__TechnicianClient<runtime.Types.Result.GetResult<Prisma.$TechnicianPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find zero or more Technicians that matches the filter.
+   * Find zero or more TechniciansPage that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {TechnicianFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
-   * // Get all Technicians
+   * // Get all TechniciansPage
    * const technicians = await prisma.technician.findMany()
    * 
-   * // Get first 10 Technicians
+   * // Get first 10 TechniciansPage
    * const technicians = await prisma.technician.findMany({ take: 10 })
    * 
    * // Only select the `id`
@@ -648,10 +648,10 @@ export interface TechnicianDelegate<ExtArgs extends runtime.Types.Extensions.Int
   create<T extends TechnicianCreateArgs>(args: Prisma.SelectSubset<T, TechnicianCreateArgs<ExtArgs>>): Prisma.Prisma__TechnicianClient<runtime.Types.Result.GetResult<Prisma.$TechnicianPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Create many Technicians.
-   * @param {TechnicianCreateManyArgs} args - Arguments to create many Technicians.
+   * Create many TechniciansPage.
+   * @param {TechnicianCreateManyArgs} args - Arguments to create many TechniciansPage.
    * @example
-   * // Create many Technicians
+   * // Create many TechniciansPage
    * const technician = await prisma.technician.createMany({
    *   data: [
    *     // ... provide data here
@@ -693,10 +693,10 @@ export interface TechnicianDelegate<ExtArgs extends runtime.Types.Extensions.Int
   update<T extends TechnicianUpdateArgs>(args: Prisma.SelectSubset<T, TechnicianUpdateArgs<ExtArgs>>): Prisma.Prisma__TechnicianClient<runtime.Types.Result.GetResult<Prisma.$TechnicianPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Delete zero or more Technicians.
-   * @param {TechnicianDeleteManyArgs} args - Arguments to filter Technicians to delete.
+   * Delete zero or more TechniciansPage.
+   * @param {TechnicianDeleteManyArgs} args - Arguments to filter TechniciansPage to delete.
    * @example
-   * // Delete a few Technicians
+   * // Delete a few TechniciansPage
    * const { count } = await prisma.technician.deleteMany({
    *   where: {
    *     // ... provide filter here
@@ -707,12 +707,12 @@ export interface TechnicianDelegate<ExtArgs extends runtime.Types.Extensions.Int
   deleteMany<T extends TechnicianDeleteManyArgs>(args?: Prisma.SelectSubset<T, TechnicianDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Update zero or more Technicians.
+   * Update zero or more TechniciansPage.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
    * @param {TechnicianUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
-   * // Update many Technicians
+   * // Update many TechniciansPage
    * const technician = await prisma.technician.updateMany({
    *   where: {
    *     // ... provide filter here
@@ -746,15 +746,15 @@ export interface TechnicianDelegate<ExtArgs extends runtime.Types.Extensions.Int
 
 
   /**
-   * Count the number of Technicians.
+   * Count the number of TechniciansPage.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {TechnicianCountArgs} args - Arguments to filter Technicians to count.
+   * @param {TechnicianCountArgs} args - Arguments to filter TechniciansPage to count.
    * @example
-   * // Count the number of Technicians
+   * // Count the number of TechniciansPage
    * const count = await prisma.technician.count({
    *   where: {
-   *     // ... the filter for the Technicians we want to count
+   *     // ... the filter for the TechniciansPage we want to count
    *   }
    * })
   **/
@@ -991,31 +991,31 @@ export type TechnicianFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Int
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Technicians to fetch.
+   * Determine the order of TechniciansPage to fetch.
    */
   orderBy?: Prisma.TechnicianOrderByWithRelationInput | Prisma.TechnicianOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for Technicians.
+   * Sets the position for searching for TechniciansPage.
    */
   cursor?: Prisma.TechnicianWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Technicians from the position of the cursor.
+   * Take `±n` TechniciansPage from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Technicians.
+   * Skip the first `n` TechniciansPage.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Technicians.
+   * Filter by unique combinations of TechniciansPage.
    */
   distinct?: Prisma.TechnicianScalarFieldEnum | Prisma.TechnicianScalarFieldEnum[]
 }
@@ -1043,31 +1043,31 @@ export type TechnicianFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensi
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Technicians to fetch.
+   * Determine the order of TechniciansPage to fetch.
    */
   orderBy?: Prisma.TechnicianOrderByWithRelationInput | Prisma.TechnicianOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for Technicians.
+   * Sets the position for searching for TechniciansPage.
    */
   cursor?: Prisma.TechnicianWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Technicians from the position of the cursor.
+   * Take `±n` TechniciansPage from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Technicians.
+   * Skip the first `n` TechniciansPage.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Technicians.
+   * Filter by unique combinations of TechniciansPage.
    */
   distinct?: Prisma.TechnicianScalarFieldEnum | Prisma.TechnicianScalarFieldEnum[]
 }
@@ -1089,37 +1089,37 @@ export type TechnicianFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    */
   include?: Prisma.TechnicianInclude<ExtArgs> | null
   /**
-   * Filter, which Technicians to fetch.
+   * Filter, which TechniciansPage to fetch.
    */
   where?: Prisma.TechnicianWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Technicians to fetch.
+   * Determine the order of TechniciansPage to fetch.
    */
   orderBy?: Prisma.TechnicianOrderByWithRelationInput | Prisma.TechnicianOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing Technicians.
+   * Sets the position for listing TechniciansPage.
    */
   cursor?: Prisma.TechnicianWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Technicians from the position of the cursor.
+   * Take `±n` TechniciansPage from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Technicians.
+   * Skip the first `n` TechniciansPage.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Technicians.
+   * Filter by unique combinations of TechniciansPage.
    */
   distinct?: Prisma.TechnicianScalarFieldEnum | Prisma.TechnicianScalarFieldEnum[]
 }
@@ -1151,7 +1151,7 @@ export type TechnicianCreateArgs<ExtArgs extends runtime.Types.Extensions.Intern
  */
 export type TechnicianCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many Technicians.
+   * The data used to create many TechniciansPage.
    */
   data: Prisma.TechnicianCreateManyInput | Prisma.TechnicianCreateManyInput[]
   skipDuplicates?: boolean
@@ -1188,15 +1188,15 @@ export type TechnicianUpdateArgs<ExtArgs extends runtime.Types.Extensions.Intern
  */
 export type TechnicianUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update Technicians.
+   * The data used to update TechniciansPage.
    */
   data: Prisma.XOR<Prisma.TechnicianUpdateManyMutationInput, Prisma.TechnicianUncheckedUpdateManyInput>
   /**
-   * Filter which Technicians to update
+   * Filter which TechniciansPage to update
    */
   where?: Prisma.TechnicianWhereInput
   /**
-   * Limit how many Technicians to update.
+   * Limit how many TechniciansPage to update.
    */
   limit?: number
 }
@@ -1258,11 +1258,11 @@ export type TechnicianDeleteArgs<ExtArgs extends runtime.Types.Extensions.Intern
  */
 export type TechnicianDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which Technicians to delete
+   * Filter which TechniciansPage to delete
    */
   where?: Prisma.TechnicianWhereInput
   /**
-   * Limit how many Technicians to delete.
+   * Limit how many TechniciansPage to delete.
    */
   limit?: number
 }

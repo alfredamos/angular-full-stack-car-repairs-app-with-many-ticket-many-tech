@@ -2,7 +2,7 @@ import {createError, H3Event} from "h3";
 import {authService} from "../services/auth.service";
 import {StatusCodes} from "http-status-codes";
 
-function adminAuthorization(event: H3Event) {
+export function adminAuthorization(event: H3Event) {
     //----> Get user session.
     const session = authService.getUserSession(event);
 

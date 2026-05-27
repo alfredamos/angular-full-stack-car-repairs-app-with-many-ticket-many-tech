@@ -1,11 +1,15 @@
 import {HttpError} from "http-errors"
 import {techService} from "../../../../../services/tech.service";
 import {createError, defineEventHandler, getRouterParam} from "h3";
+import {ownerOrAdminById} from "../../../../../utils/ownerOrAdminById";
 
 export default defineEventHandler(async (event) => {
     try {
         //----> Get the technician user id from the request parameters.
         const userId = getRouterParam(event, 'userId') as string;
+
+        //----> Check for admin role or ownership.
+        ownerOrAdminById(event, userId)
 
         //----> Fetch technician by user id.
         return await techService.getTechnicianByUserId(userId);

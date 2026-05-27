@@ -7,7 +7,7 @@
   },
   "scripts": {
     "ng": "ng --watch",
-    "dev": "vite --watch",
+    "dev": "vite",
     "start": "pnpm run dev",
     "build": "vite build",
     "watch": "vite build --watch",
@@ -36,6 +36,7 @@
     "http-errors": "^2.0.1",
     "http-status-codes": "^2.3.0",
     "jsonwebtoken": "^9.0.3",
+    "local-storage": "^2.0.0",
     "marked": "^15.0.7",
     "marked-gfm-heading-id": "^4.1.1",
     "marked-highlight": "^2.2.1",

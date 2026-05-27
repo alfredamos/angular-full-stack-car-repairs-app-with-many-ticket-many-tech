@@ -1,9 +1,13 @@
 import {createError, defineEventHandler, getRouterParam} from "h3";
 import {HttpError} from "http-errors"
 import {techService} from "../../../../../services/tech.service";
+import {adminAuthorization} from "../../../../../utils/adminAuthorization";
 
 export default defineEventHandler(async (event) => {
     try {
+        //----> Check for admin role.
+        adminAuthorization(event);
+
         //----> Get the technician specialty from the request parameters.
         const specialty = getRouterParam(event, 'specialty') as string;
 

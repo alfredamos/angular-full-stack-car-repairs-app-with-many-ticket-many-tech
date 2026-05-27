@@ -5,11 +5,12 @@ import {HttpError} from "http-errors"
 import {authService} from "../../../services/auth.service";
 import {AssignedTicketUncheckedCreateInput} from "../../../../generated/prisma/models/AssignedTicket";
 import {validateWithZodSchema} from "../../../validations/zodShema.validation";
+import {adminAuthorization} from "../../../utils/adminAuthorization";
 
 export default defineEventHandler(async (event) => {
     try {
-        //----> Get the user session from the request.
-        const session = authService.getUserSession(event);
+        //----> Check for admin role.
+        const session = adminAuthorization(event);
 
         //----> Get the payload from the request body.
         const data = await readBody(event) as unknown as AssignedTicketUncheckedCreateInput;

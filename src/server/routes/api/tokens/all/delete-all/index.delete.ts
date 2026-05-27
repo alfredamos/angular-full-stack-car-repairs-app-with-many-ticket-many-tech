@@ -1,9 +1,13 @@
 import {HttpError} from "http-errors"
 import {createError, defineEventHandler} from "h3";
 import {tokenService} from "../../../../../services/token.service";
+import {adminAuthorization} from "../../../../../utils/adminAuthorization";
 
-export default defineEventHandler(async (_event) => {
+export default defineEventHandler(async (event) => {
     try {
+        //----> Check for admin role.
+        adminAuthorization(event);
+
         //----> Delete all invalid tokens.
         return await tokenService.deleteAllInvalidTokens();
 

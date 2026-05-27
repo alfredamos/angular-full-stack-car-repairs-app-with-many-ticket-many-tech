@@ -2,9 +2,13 @@ import {createError, defineEventHandler, getRouterParam, readValidatedBody} from
 import {HttpError} from "http-errors"
 import {customerService} from "../../../../services/customer.service";
 import {customerEditSchema} from "../../../../validations/customer.validation";
+import {adminAuthorization} from "../../../../utils/adminAuthorization";
 
 export default defineEventHandler(async (event) => {
     try {
+        //----> Check for admin role.
+        adminAuthorization(event);
+
         //----> Get the payload from the request body.
         const customer = await readValidatedBody(event, customerEditSchema.parse);
 

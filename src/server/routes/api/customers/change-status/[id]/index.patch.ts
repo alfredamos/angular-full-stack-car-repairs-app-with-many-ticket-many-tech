@@ -1,9 +1,13 @@
 import {createError, defineEventHandler, getRouterParam} from "h3";
 import {HttpError} from "http-errors"
 import {customerService} from "../../../../../services/customer.service";
+import {adminAuthorization} from "../../../../../utils/adminAuthorization";
 
 export default defineEventHandler(async (event) => {
     try {
+        //----> Check for admin role.
+        adminAuthorization(event);
+
         //----> Get the id from the request parameters.
         const id = getRouterParam(event, 'id') as string;
 

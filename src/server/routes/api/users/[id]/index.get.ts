@@ -1,11 +1,15 @@
 import {HttpError} from "http-errors"
-import {createError, defineEventHandler, getRouterParam} from "h3";
+import {createError, defineEventHandler, getRouterParam, H3Event} from "h3";
 import {userService} from "../../../../services/user.service";
+import {ownerOrAdminById} from "../../../../utils/ownerOrAdminById";
 
 export default defineEventHandler(async (event) => {
     try {
         //----> Get the user id from the request parameters.
         const id = getRouterParam(event, 'id') as string;
+
+        //----> Check for admin role or ownership.
+        ownerOrAdminById(event, id)
 
         //----> Fetch the user with the giving id.
         return await userService.getUserById(id);

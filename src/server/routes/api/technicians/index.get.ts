@@ -1,9 +1,13 @@
 import {createError, defineEventHandler} from "h3";
 import {HttpError} from "http-errors"
 import {techService} from "../../../services/tech.service";
+import {adminAuthorization} from "../../../utils/adminAuthorization";
 
-export default defineEventHandler(async (_event) => {
+export default defineEventHandler(async (event) => {
     try {
+        //----> Check for admin role.
+        adminAuthorization(event);
+
         //----> Fetch all technicians.
         return await techService.getAllTechnicians();
     }catch (err){

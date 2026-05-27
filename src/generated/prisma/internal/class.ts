@@ -212,7 +212,7 @@ export interface PrismaClient<
    * `prisma.technician`: Exposes CRUD operations for the **Technician** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Technicians
+    * // Fetch zero or more TechniciansPage
     * const technicians = await prisma.technician.findMany()
     * ```
     */

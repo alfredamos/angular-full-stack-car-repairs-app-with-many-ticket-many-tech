@@ -2,9 +2,13 @@ import {createError, defineEventHandler, getRouterParam, readValidatedBody} from
 import {HttpError} from "http-errors"
 import {techService} from "../../../../services/tech.service";
 import {technicianEditSchema} from "../../../../validations/technician.validation";
+import {adminAuthorization} from "../../../../utils/adminAuthorization";
 
 export default defineEventHandler(async (event) => {
     try {
+        //----> Check for admin role.
+        adminAuthorization(event);
+
         //----> Get the payload from the request body.
         const technician = await readValidatedBody(event, technicianEditSchema.parse);
 
