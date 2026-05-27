@@ -2,7 +2,6 @@ import {createError, defineEventHandler, readValidatedBody} from "h3";
 import {changeUserPasswordSchema} from "../../../validations/auth.validation";
 import {authService} from "../../../services/auth.service";
 import {HttpError} from "http-errors"
-import {StatusCodes} from "http-status-codes";
 
 export default defineEventHandler(async (event) => {
     try {
@@ -14,6 +13,6 @@ export default defineEventHandler(async (event) => {
 
     }catch (err){
         const error = err as HttpError;
-        throw createError({statusCode: error?.statusCode, statusText: error?.message});
+        throw createError({statusCode: error?.statusCode, message: error?.message});
     }
 })

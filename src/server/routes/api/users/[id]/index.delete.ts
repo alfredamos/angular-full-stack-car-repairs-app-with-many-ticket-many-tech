@@ -11,6 +11,6 @@ export default defineEventHandler(async (event) => {
         return await userService.deleteUserById(id);
     }catch (err){
         const error = err as HttpError;
-        throw createError({statusCode: error?.statusCode, statusText: error?.message})
+        throw createError({statusCode: error?.statusCode, message: error?.message})
     }
 })

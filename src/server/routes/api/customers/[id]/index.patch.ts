@@ -15,6 +15,6 @@ export default defineEventHandler(async (event) => {
         return await customerService.editCustomerById(id, customer);
     }catch (err){
         const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, statusText: error?.message})
+        throw createError({statusCode: error?.statusCode, message: error?.message})
     }
 })

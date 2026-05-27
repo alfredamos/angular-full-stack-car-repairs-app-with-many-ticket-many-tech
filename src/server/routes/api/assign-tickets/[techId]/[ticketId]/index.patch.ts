@@ -16,6 +16,6 @@ export default defineEventHandler(async (event) => {
         return await assignedTicketService.editAssignedTicketById(techId, ticketId, ticket);
     }catch (err){
         const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, statusText: error?.message})
+        throw createError({statusCode: error?.statusCode, message: error?.message})
     }
 })

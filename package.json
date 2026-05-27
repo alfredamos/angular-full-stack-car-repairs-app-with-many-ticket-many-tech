@@ -6,7 +6,7 @@
     "node": ">=20.19.1"
   },
   "scripts": {
-    "ng": "ng",
+    "ng": "ng --watch",
     "dev": "vite --watch",
     "start": "pnpm run dev",
     "build": "vite build",

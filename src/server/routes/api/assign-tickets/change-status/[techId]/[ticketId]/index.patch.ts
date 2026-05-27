@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
         //----> Change the status of the ticket.
         return await assignedTicketService.changeAssignedTicketStatus(techId, ticketId);
     }catch (err){
-        const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, statusText: error?.message})
+        const error = err as HttpError;
+        throw createError({statusCode: error?.statusCode, message: error?.message})
     }
 })

@@ -1,16 +1,20 @@
 import {createError, defineEventHandler, getRouterParam} from "h3";
 import {HttpError} from "http-errors"
-import {customerService} from "../../../../services/customer.service";
+import {ticketService} from "../../../../../services/ticket.service";
+
+
 
 export default defineEventHandler(async (event) => {
     try {
         //----> Get the customer id from the request parameters.
-        const id = getRouterParam(event, 'id') as string;
+        const customerId = getRouterParam(event, 'customerId') as string;
 
-        //----> Delete customer with the giving id.
-        return await customerService.deleteCustomerById(id);
+        //----> Fetch tickets with the giving customer id.
+        return await ticketService.getTicketByCustomerId(customerId);
+
+
     }catch (err){
-        const error = err as HttpError
+        const error = err as HttpError;
         throw createError({statusCode: error?.statusCode, message: error?.message})
     }
 })

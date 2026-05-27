@@ -1,4 +1,4 @@
-import {createError, defineEventHandler, getRouterParam, readValidatedBody} from "h3";
+import {createError, defineEventHandler, readValidatedBody} from "h3";
 import {HttpError} from "http-errors"
 import {customerCreateSchema} from "../../../validations/customer.validation";
 import {customerService} from "../../../services/customer.service";
@@ -12,6 +12,6 @@ export default defineEventHandler(async (event) => {
         return await customerService.createCustomer(customer);
     }catch (err){
         const error = err as HttpError
-        throw createError({statusCode: error?.statusCode, statusText: error?.message})
+        throw createError({statusCode: error?.statusCode, message: error?.message})
     }
 })
