@@ -1,0 +1,25 @@
+@defer (on idle) {
+    <div class="h-dvh flex justify-center items-center">
+        <div
+                class="max-w-md font-bold p-10 bg-white ring-1 dark:ring-red-200 rounded-lg shadow-lg text-black mx-auto"
+        >
+            <h1 class="text-center">Ben Car Repair Shop</h1>
+
+            <p class="mt-20 break-words">
+                This is the home page of Ben Car repair shop. We specialize in all kinds of japanese and
+                german cars. Please log in to enjoy our world class service.
+            </p>
+            @if (!authService.isLoggedIn()) {
+                <div class="flex justify-between items-center mt-10">
+                    <a routerLink="/login" class="text-indigo-900 hover:text-green-900">Login</a>
+                    <a routerLink="/signup" class="text-brown-900 hover:text-green-900">Sign Up</a>
+                </div>
+            }
+        </div>
+    </div>
+}@placeholder {
+    <!-- This placeholder content is rendered on the server initially -->
+    <p>Loading user dashboard...</p>
+}
+
+

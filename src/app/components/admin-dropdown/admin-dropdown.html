@@ -1,0 +1,35 @@
+<div class="relative group">
+    <!-- Dropdown Trigger (e.g., a button or link) -->
+    <button class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">
+        Admin
+    </button>
+    <!--
+    export const adminItems = [
+      { href: '/customers', label: 'Customers' },
+      { href: '/customers/all-active/get-all-active-customers', label: 'Active Customers' },
+      { href: '/customers/all-in-active/get-all-in-active-customers', label: 'Inactive Customers' },
+      { href: '/users', label: 'Users' },
+      { href: '/tickets/completed-tickets', label: 'CompletedTickets' },
+      { href: '/tickets/uncompleted-tickets', label: 'InCompletedTickets' },
+      { href: '/tickets/by-customer', label: 'TicketsByCustomer' },
+      { href: '/tickets', label: 'Tickets' },
+    ];
+    -->
+
+    <!-- Dropdown Menu (hidden by default) -->
+    <div class="absolute hidden group-hover:block w-48 bg-white shadow-lg rounded-b border-t-0 z-10">
+        <a [routerLink]="['/customers']" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Customers</a>
+        <a [routerLink]="['/customers/active']" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Active Customers</a>
+        <a [routerLink]="['/customers/inactive']" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Inactive Customers</a>
+        <a [routerLink]="['/assign-tickets']" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Assigned Tickets</a>
+        <a [routerLink]="['/technicians']" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Technicians</a>
+        <a [routerLink]="['/tickets']" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Tickets</a>
+        <a [routerLink]="['/assign-tickets/all/completed']" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Completed Tickets</a>
+        <a [routerLink]="['/assign-tickets/all/incompleted']" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Incomplete Tickets</a>
+        <a [routerLink]="['/users']" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Users</a>
+    </div>
+</div>
+
+
+
+
