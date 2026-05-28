@@ -1,10 +1,38 @@
-import {Component} from "@angular/core";
+import {Component, inject} from "@angular/core";
+import {ChangePasswordForm} from "../../components/auth/change-password-form/change-password-form";
+import {AuthService} from "../../services/auth-service";
+import {ChangeUserPassword} from "../../../server/validations/auth.validation";
+import {Router} from "@angular/router";
+import {AuthDb} from "../../services/auth-db";
 
 @Component({
     selector: 'app-change-password-page',
-    imports: [],
+    imports: [ChangePasswordForm],
     template: `
-    <div>Change Password Page!</div>
+    <app-change-password-form
+            [email]="email()"
+            (onChangeUserPassword)="submitPasswordChangeForm($event)"
+            (onBackToList)="backToList()"
+    />
   `,
+    standalone: true
 })
-export default class ChangePasswordPage {}
+export default class ChangePasswordPage {
+    authDb = inject(AuthDb);
+    authService = inject(AuthService);
+    router = inject(Router);
+
+    email = this.authService.email;
+
+    async submitPasswordChangeForm(changeUserPassword: ChangeUserPassword) {
+        console.log("At point 1, In change-password-page, changeUserPassword : ", changeUserPassword);
+        const response = await this.authDb.changeUserPassword(changeUserPassword);
+        console.log("At point 2, In change-password-page, response : ", response);
+
+        await this.router.navigate(['/']);
+    }
+
+    async backToList() {
+        await this.router.navigate(['/']);
+    }
+}

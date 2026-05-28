@@ -108,7 +108,7 @@ model User {
   @@map("users")
 }
 
-enum Gender {
+enum GenderModel {
   Female
   Male
 }

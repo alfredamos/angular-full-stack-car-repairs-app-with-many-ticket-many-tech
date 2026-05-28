@@ -1270,7 +1270,7 @@ export interface UserFieldRefs {
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly phone: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
-  readonly gender: Prisma.FieldRef<"User", 'Gender'>
+  readonly gender: Prisma.FieldRef<"User", 'GenderModel'>
   readonly role: Prisma.FieldRef<"User", 'Role'>
   readonly userType: Prisma.FieldRef<"User", 'UserType'>
   readonly image: Prisma.FieldRef<"User", 'String'>

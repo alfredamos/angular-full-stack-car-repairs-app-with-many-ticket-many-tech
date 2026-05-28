@@ -10,6 +10,7 @@ export class UserDto {
     userType: UserType = UserType.Customer;
     image: string = "";
     gender: Gender = Gender.Male;
+    dateOfBirth: Date = new Date();
 }
 
 export function fromUserToUserDto(user: User): UserDto {
@@ -21,6 +22,7 @@ export function fromUserToUserDto(user: User): UserDto {
         role: user.role,
         image: user.image,
         gender: user.gender,
-        userType: user.userType
+        userType: user.userType,
+        dateOfBirth: user.dateOfBirth
     };
 }

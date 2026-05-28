@@ -7,4 +7,4 @@ import {Component} from "@angular/core";
     <div>Incompleted-assigned-ticket</div>
     `,
 })
-export class IncompletedAssignedTicketPage {}
+export default class IncompletedAssignedTicketPage {}
