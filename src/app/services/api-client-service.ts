@@ -10,25 +10,49 @@ export class ApiHttpClientService<T> {
   private baseUrl = "http://localhost:5173/api"
 
   public async get<U>(url: string) {
-    const response$ = this.httpClient.get<U>(`${this.baseUrl}${url}`);
-    return firstValueFrom(response$);
+    try {
+      const response$ = this.httpClient.get<U>(`${this.baseUrl}${url}`);
+      return firstValueFrom(response$);
+    }catch (err){
+      console.log(" error-message : ", err);
+      throw new Error("Something went wrong. Please try again later.")
+    }
+
 
   }
 
   public async post<U>(url: string, data: T) {
-    const response$ = this.httpClient.post<U>(`${this.baseUrl}${url}`, data);
-    return firstValueFrom(response$);
+    try {
+      const response$ = this.httpClient.post<U>(`${this.baseUrl}${url}`, data);
+      return firstValueFrom(response$);
+    }catch (err){
+      console.log(" error-message : ", err);
+      throw new Error("Something went wrong. Please try again later.")
+    }
+
   }
 
   public async patch<U>(url: string, data: T) {
-    const response$ = this.httpClient.patch<U>(`${this.baseUrl}${url}`, data);
-    return firstValueFrom(response$);
+    try {
+      const response$ = this.httpClient.patch<U>(`${this.baseUrl}${url}`, data);
+      return firstValueFrom(response$);
+    }catch (err){
+      console.log(" error-message : ", err);
+      throw new Error("Something went wrong. Please try again later.")
+    }
+
   }
 
 
   public async delete<U>(url: string) {
-    const response$ = this.httpClient.delete<U>(`${this.baseUrl}${url}`);
-    return firstValueFrom(response$);
+    try {
+      const response$ = this.httpClient.delete<U>(`${this.baseUrl}${url}`);
+      return firstValueFrom(response$);
+    }catch (err){
+      console.log(" error-message : ", err);
+      throw new Error("Something went wrong. Please try again later.")
+    }
+
   }
 
 }

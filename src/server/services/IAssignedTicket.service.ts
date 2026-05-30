@@ -13,6 +13,7 @@ export interface IAssignedTicketService {
     getAllAssignedTicket(): Promise<AssignedTicketResponse[]>;
     getAssignedTicketsByTechId(techId: string): Promise<AssignedTicketResponse[]>;
     getAssignedTicketsByTicketId(ticketId: string): Promise<AssignedTicketResponse[]>;
+    getAssignedTicketsByUserId(userId: string): Promise<AssignedTicketResponse[]>;
     getCompletedAssignedTicket(): Promise<AssignedTicketResponse[]>;
     getInCompletedAssignedTicket(): Promise<AssignedTicketResponse[]>;
 }

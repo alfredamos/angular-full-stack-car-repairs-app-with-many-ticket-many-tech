@@ -6,6 +6,11 @@ import {UserDto} from "../../models/userDto.model";
 import {AuthParam} from "../../server/utils/authParam.util";
 import {LocalStorageParam} from "../utils/localStorageParam.util";
 import {BrowserStorageService} from "./browser-storage-service";
+import {CustomerService} from "./customer-service";
+import {UserService} from "./user-service";
+import {TicketService} from "./ticket-service";
+import {TechService} from "./tech-service";
+import {AssignedTicketService} from "./assigned-ticket-service";
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +26,11 @@ export class AuthService {
   email = computed(() => this.authSession()?.email || this.getLocalStore()?.email);
 
   ls = inject(BrowserStorageService);
+  assignedTicket = inject(AssignedTicketService);
+  customerService = inject(CustomerService);
+  techService = inject(TechService);
+  ticketsService = inject(TicketService);
+  userService = inject(UserService);
 
   setSession(session: UserSession) {
     this.setLocaLStore(session);
@@ -29,11 +39,12 @@ export class AuthService {
 
   removeSession() {
     this.removeLocaLStore();
+    this.assignedTicket.removeLocalStore();
+    this.customerService.removeLocalStore();
+    this.techService.removeLocalStore();
+    this.ticketsService.removeLocalStore();
+    this.userService.removeLocalStore();
     this.authSessionState.set(emptyUserSession);
-  }
-
-  getSession() {
-    return this.authSessionState();
   }
 
   setLocaLStore(value: UserSession) {

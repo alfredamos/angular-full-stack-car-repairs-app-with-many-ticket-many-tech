@@ -51,7 +51,7 @@ export class AuthService implements IAuthService {
         return new ResponseMessage("Password changed successfully", "success", StatusCodes.OK);
     }
 
-    async changeUserRole(changeUserRole: ChangeUserRole, event: H3Event): Promise<ResponseMessage> {
+    async changeUserRole(changeUserRole: ChangeUserRole, event: H3Event): Promise<UserDto> {
         //----> Get user-session.
         const session = this.getUserSession(event);
 
@@ -67,10 +67,10 @@ export class AuthService implements IAuthService {
         const role = user.role === Role.Admin ? Role.User : Role.Admin;
 
         //----> Update the user info in db.
-        await prisma.user.update({where: {email: user.email}, data: {...user, role}});
+        const updatedUser = await prisma.user.update({where: {email: user.email}, data: {...user, role}});
 
         //----> Send back response.
-        return new ResponseMessage("Role changed successfully", "success", StatusCodes.OK);
+        return fromUserToUserDto(updatedUser);
     }
 
     async editUserProfile(editUserProfile: EditUserProfile): Promise<ResponseMessage> {

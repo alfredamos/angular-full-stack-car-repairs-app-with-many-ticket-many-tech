@@ -30,10 +30,12 @@ export class NavigationBar {
   }
 
   async onLogout() {
-    await this.authDb.logoutUser()
+    await this.authDb.logoutUser();
+    this.authService.removeSession();
   }
 
   async refreshUserToken(){
-    return  await this.authDb.refreshUserToken()
+    const response =  await this.authDb.refreshUserToken()
+    this.authService.setSession(response);
   }
 }

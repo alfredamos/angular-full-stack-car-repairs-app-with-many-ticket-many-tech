@@ -12,7 +12,7 @@ import {H3Event} from "h3";
 
 export interface IAuthService {
     changeUserPassword(changeUserPassword: ChangeUserPassword): Promise<ResponseMessage>;
-    changeUserRole(changeUserRole: ChangeUserRole, event: H3Event): Promise<ResponseMessage>;
+    changeUserRole(changeUserRole: ChangeUserRole, event: H3Event): Promise<UserDto>;
     editUserProfile(editUserProfile: EditUserProfile): Promise<ResponseMessage>;
     getCurrentUser(event: H3Event): Promise<UserDto>;
     getUserSession(event: H3Event): UserSession;

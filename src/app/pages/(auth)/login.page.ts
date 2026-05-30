@@ -25,9 +25,7 @@ export default class LoginPage {
     }
 
     async loginSubmit(loginUser: LoginUser) {
-        console.log("At point 1, In login-user-page, signupUser : ", loginUser);
-        const response = await this.authDb.loginUser(loginUser);
-        console.log("At point 2, In login-user-page, response : ", response);
+        await this.authDb.loginUser(loginUser);
         await this.router.navigate(['/']);
     }
 }

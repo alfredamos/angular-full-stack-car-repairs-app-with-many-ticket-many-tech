@@ -25,9 +25,7 @@ export default class ChangePasswordPage {
     email = this.authService.email;
 
     async submitPasswordChangeForm(changeUserPassword: ChangeUserPassword) {
-        console.log("At point 1, In change-password-page, changeUserPassword : ", changeUserPassword);
-        const response = await this.authDb.changeUserPassword(changeUserPassword);
-        console.log("At point 2, In change-password-page, response : ", response);
+        await this.authDb.changeUserPassword(changeUserPassword);
 
         await this.router.navigate(['/']);
     }

@@ -1,0 +1,87 @@
+@if (tickets().length === 0) {
+    <div class="flex justify-between items-center mx-20 mt-5">
+        <span class="font-bold">Add New Ticket</span>
+        <a class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-lg" routerLink="/tickets/add">Add</a>
+    </div>
+    <div class="h-dvh flex justify-center items-center">
+        <h1 class="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">There are no tickets to display at this time!</h1>
+    </div>
+}@else{
+    <div class="overflow-x-auto overflow-y-auto mt-5 max-w-sm md:max-w-2xl mx-auto">
+        <hr class="h-px my-4 bg-gray-200 border-0"/>
+        <h4 class="text-center text-xl font-bold">List of Tickets</h4>
+        <hr class="h-px my-4 bg-gray-200 border-0"/>
+        @if (authService.isAdmin()){
+            <div class="flex justify-between items-center">
+                <span class="font-bold">Add New Ticket</span>
+                <a class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-lg" routerLink="/tickets/add">Add</a>
+            </div>
+            <hr class="h-px my-4 bg-gray-200 border-0"/>
+        }
+
+        <table class="mt-5 table-fixed">
+            <thead>
+            <tr>
+                <th class="px-2 text-left w-1/6">Title</th>
+                <th class="px-2 text-left">Description</th>
+                <th class="px-2 text-left">Status</th>
+                <th class="px-2 text-left">Completed</th>
+                <th class="px-2 text-left">AssignBy</th>
+                <th class="px-2 text-left">AssignAt</th>
+                <th class="px-2 text-left">Customer Name</th>
+                <th class="px-2 text-left">Customer Email</th>
+                <th class="px-2 text-left">Customer Phone</th>
+                <th class="px-2 text-left">Customer Address</th>
+                <th class="px-2 text-left">Tech Name</th>
+                <th class="px-2 text-left">Tech Email</th>
+                <th class="px-2 text-left">Tech Phone</th>
+                <th class="px-2 text-left">Specialty</th>
+                <th class="px-2 text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                @for (ticket of tickets(); track `${ticket.techId}-${ticket.ticketId}}`){
+                    <tr>
+                        <td class="px-2 align-top w-1/6">{{ticket.ticketTitle}}</td>
+                        <td class="px-2 align-top">{{ticket.ticketNotes}}</td>
+                        <td class="px-2 align-top">{{ticket.status}}</td>
+                        <td class="px-2 align-top">{{ticket.completed}}</td>
+                        <td class="px-2 align-top">{{ticket.assignBy}}</td>
+                        <td class="px-2 align-top">{{formattedDate(stringToDate(ticket.assignAt))}}</td>
+                        <td class="px-2 align-top">{{ticket.customerName}}</td>
+                        <td class="px-2 align-top">{{ticket.customerEmail}}</td>
+                        <td class="px-2 align-top">{{ticket.customerPhone}}</td>
+                        <td class="px-2 align-top">{{ticket.customerAddress}}</td>
+                        <td class="px-2 align-top">{{ticket.techName}}</td>
+                        <td class="px-2 align-top">{{ticket.techEmail}}</td>
+                        <td class="px-2 align-top">{{ticket.techPhone}}</td>
+                        <td class="px-2 align-top">{{ticket.techSpecialty}}</td>
+
+                        <td class="flex items-center justify-center gap-2 px-2 align-middle">
+                            @if(authService.isAdmin()){
+                                <a [routerLink]="`/assign-tickets/${ticket.techId}/${ticket.ticketId}/edit`" class="px-2 py-1 bg-white text-yellow-900 border border-yellow-900 hover:bg-yellow-900 hover:text-white font-bold rounded-md">
+                                    Edit
+                                </a>
+                                <a [routerLink]="`/assign-tickets/${ticket.techId}/${ticket.ticketId}/detail`" class="px-2 py-1 bg-white text-rose-900 border border-rose-900 hover:bg-rose-900 hover:text-white font-bold rounded-md">
+                                    Delete
+                                </a>
+                            }
+                            <a [routerLink]="`/assign-tickets/${ticket.techId}/${ticket.ticketId}/detail`" class="px-2 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-md">
+                                Detail
+                            </a>
+                            <button (click)="changeTicketStatus(ticket.techId, ticket.ticketId)" class="flex items-center px-2 py-1 bg-white text-green-900 border border-green-900 hover:bg-green-900 hover:text-white font-bold rounded-md">
+                                {{ticket.completed ? "Undo" : "Done"}}
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr class="h-px my-8 bg-gray-200 border-0"/>
+    </div>
+
+}
+
+
+
+

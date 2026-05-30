@@ -24,9 +24,7 @@ export default class SignupPage {
     }
 
     async signupSubmit(signupUser: SignupUser) {
-        console.log("At point 1, In signup-user-page, signupUser : ", signupUser);
-        const response = await this.authDb.signupUser(signupUser);
-        console.log("At point 2, In signup-user-page, response : ", response);
+        await this.authDb.signupUser(signupUser);
         await this.router.navigate(['/']);
     }
 }

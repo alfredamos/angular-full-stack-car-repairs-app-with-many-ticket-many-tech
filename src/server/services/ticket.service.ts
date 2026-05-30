@@ -65,6 +65,14 @@ class TicketService implements ITicketService {
         return ticket.map(ticket => toTicketResponse(ticket as TicketWithCustomer));
     }
 
+    async getTicketByUserId(userId: string): Promise<TicketResponse[]> {
+        //----> Fetch the customer associated with the giving user-id.
+        const customer = await this.getOneCustomer(userId);
+
+        //----> fetch all tickets associated with the customer.
+        return await this.getTicketByCustomerId(customer.id);
+    }
+
     private async getOneTicket(id: string) {
         //----> Fetch ticket by id.
         const ticket = await prisma.ticket.findUnique({where: {id}, include: {customer: {include: {user: true}}}});
@@ -76,7 +84,16 @@ class TicketService implements ITicketService {
         return ticket;
     }
 
+    private async getOneCustomer(userId: string) {
+        //----> Get the customer associated with the giving user-id.
+        const customer = await prisma.customer.findUnique({where: {userId}});
 
+        //----> Check for null customer.
+        if (!customer) throw createError({statusText: "Customer not found in db!", statusCode: StatusCodes.NOT_FOUND});
+
+        //----> Send back response.
+        return customer;
+    }
 
 }
 

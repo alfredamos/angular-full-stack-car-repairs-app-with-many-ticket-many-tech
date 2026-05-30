@@ -12,6 +12,7 @@
         "build": {
           "builder": "@analogjs/platform:vite",
           "options": {
+            "sourceMap": false,
             "configFile": "vite.config.ts",
             "main": "src/main.ts",
             "outputPath": "dist/client",
@@ -20,7 +21,8 @@
           "defaultConfiguration": "production",
           "configurations": {
             "development": {
-              "mode": "development"
+              "mode": "development",
+              "sourceMap": false
             },
             "production": {
               "sourcemap": false,

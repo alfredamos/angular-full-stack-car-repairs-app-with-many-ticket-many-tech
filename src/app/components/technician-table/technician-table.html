@@ -1,0 +1,85 @@
+@if (technicians().length === 0) {
+    <div class="flex justify-between items-center mx-20 mt-5">
+        <span class="font-bold">Add New Tech</span>
+        <a class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-lg" routerLink="/technicians/add">Add</a>
+    </div>
+    <div class="h-dvh flex justify-center items-center">
+        <h1 class="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">There are no tickets to display at this time!</h1>
+    </div>
+}@else{
+    <div class="overflow-x-auto overflow-y-auto mt-5 max-w-sm md:max-w-2xl mx-auto">
+        <hr class="h-px my-4 bg-gray-200 border-0"/>
+        <h4 class="text-center text-xl font-bold">List of Technicians</h4>
+        <hr class="h-px my-4 bg-gray-200 border-0"/>
+        @if (authService.isAdmin()){
+            <div class="flex justify-between items-center">
+                <span class="font-bold">Add New Technicians</span>
+                <a class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-lg" routerLink="/technicians/add">Add</a>
+            </div>
+            <hr class="h-px my-4 bg-gray-200 border-0"/>
+        }
+        <table class="mt-5 table-fixed">
+            <thead>
+            <tr>
+                <th class="px-2 text-left w-1/6">Image</th>
+                <th class="px-2 text-left">Name</th>
+                <th class="px-2 text-left">Email</th>
+                <th class="px-2 text-left">Phone</th>
+                <th class="px-2 text-left">Birthdate</th>
+                <th class="px-2 text-left">Specialty</th>
+                <th class="px-2 text-left">Gender</th>
+                <th class="px-2 text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                @for (tech of technicians(); track tech.id){
+                    <tr>
+                        <td class="m-1">
+                            <div class="relative w-full h-20">
+                                <img
+                                        [ngSrc]="tech.image"
+                                        class="object-cover p-1"
+                                        [alt]="tech.name"
+                                        fill
+                                        priority
+                                />
+                            </div>
+                        </td>
+                        <td class="px-2 align-top w-1/6">{{tech.name}}</td>
+                        <td class="px-2 align-top">{{tech.email}}</td>
+                        <td class="px-2 align-top">{{tech.phone}}</td>
+                        <td class="px-2 align-top">
+                            {{formattedDate(stringToDate(tech.dateOfBirth))}}
+                        </td>
+                        <td class="px-2 align-top">
+                            {{tech.specialty}}
+                        </td>
+                        <td class="px-2 align-top">
+                            {{tech.gender}}
+                        </td>
+
+                        <td class="flex items-center justify-center gap-2 px-2 align-middle">
+                            @if(authService.isAdmin()){
+                                <a [routerLink]="`/technicians/${tech.id}/edit`" class="px-2 py-1 bg-white text-yellow-900 border border-yellow-900 hover:bg-yellow-900 hover:text-white font-bold rounded-md">
+                                    Edit
+                                </a>
+                                <a [routerLink]="`/technicians/${tech.id}/detail`" class="px-2 py-1 bg-white text-rose-900 border border-rose-900 hover:bg-rose-900 hover:text-white font-bold rounded-md">
+                                    Delete
+                                </a>
+                            }
+                            <a [routerLink]="`/technicians/${tech.id}/detail`" class="px-2 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-md">
+                                Detail
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr class="h-px my-8 bg-gray-200 border-0"/>
+    </div>
+
+}
+
+
+
+

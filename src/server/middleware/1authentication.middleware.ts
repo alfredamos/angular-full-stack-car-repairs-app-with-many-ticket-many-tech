@@ -3,7 +3,7 @@ import {authService} from "../services/auth.service";
 import {StatusCodes} from "http-status-codes";
 import {isPublicRoute} from "../utils/publicRoute";
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler( async (event) => {
     //----> Log the incoming request
     const route = event.node.req.originalUrl!;
     console.log(`Incoming request: ${event.method} ${route}`);
@@ -12,6 +12,10 @@ export default defineEventHandler(async (event) => {
     const session = authService.getUserSession(event);
 
     if (!isPublicRoute(route) && !session?.isLoggedIn) {
-        await sendRedirect(event, '/login', StatusCodes.UNAUTHORIZED);
+        return await sendRedirect(event, '/login', StatusCodes.UNAUTHORIZED);
     }
+
+    //----> Continue to the next middleware.
+    return
+
 })

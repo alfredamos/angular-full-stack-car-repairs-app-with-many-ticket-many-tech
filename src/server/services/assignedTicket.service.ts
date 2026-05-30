@@ -1,4 +1,4 @@
-import { AssignedTicketUncheckedCreateInput, AssignedTicketUncheckedUpdateInput } from "src/generated/prisma/models";
+import {AssignedTicketUncheckedCreateInput, AssignedTicketUncheckedUpdateInput} from "src/generated/prisma/models";
 import {
     AssignedTicketRequest,
     AssignedTicketResponse,
@@ -88,6 +88,15 @@ class AssignedTicketService implements IAssignedTicketService {
         return assignedTickets.map(assignedTicket => toAssignedTicketResponse(assignedTicket as AssignedTicketRequest));
     }
 
+    async getAssignedTicketsByUserId(userId: string): Promise<AssignedTicketResponse[]> {
+        //----> Fetch the tech with the giving user-id.
+        const tech = await this.getOneTech(userId);
+
+        //----> Fetch all the tickets assigned to this tech and send back a response.
+        return await this.getAssignedTicketsByTechId(tech.id);
+
+    }
+
     async getCompletedAssignedTicket(): Promise<AssignedTicketResponse[]> {
         //----> Fetch all assigned tickets.
         const assignedTickets = await prisma.assignedTicket.findMany({where: {completed: true}, include: {ticket: {include: {customer: {include: {user: true}}}}, tech: {include: {user: true}}}});
@@ -113,6 +122,18 @@ class AssignedTicketService implements IAssignedTicketService {
 
         //----> Return assigned ticket
         return assignedTicket;
+    }
+
+    private async getOneTech(userId: string){
+        const tech = await prisma.technician.findUnique({where: {userId}});
+
+        //----> Check for null technician.
+        if (!tech){
+            throw createError({statusCode: StatusCodes.NOT_FOUND, message: "Technician not found in db!"});
+        }
+
+        //----> Send back response.
+        return tech;
     }
 }
 

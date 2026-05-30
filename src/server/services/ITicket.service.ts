@@ -8,4 +8,5 @@ export interface ITicketService {
     getAllTickets(): Promise<TicketResponse[]>;
     getTicketById(id: string): Promise<TicketResponse>;
     getTicketByCustomerId(customerId: string): Promise<TicketResponse[]>;
+    getTicketByUserId(userId: string): Promise<TicketResponse[]>;
 }
