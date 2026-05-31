@@ -55,26 +55,4 @@ export class CustomerDb {
     }
   }
 
-  async getCustomerById(id: string) {
-    try {
-      const response = await this.apiClient.get<CustomerResponse>(`/customers/${id}`);
-      this.customerService.getCustomerById(id)
-      return response;
-    }catch (err){
-      console.log(" error-message in get-customer-by-id, error : ", err);
-      throw new Error("Something went wrong. Please try again later.")
-    }
-  }
-
-  async getCustomerByUserId(userId: string) {
-    try {
-      const response = await this.apiClient.get<CustomerResponse>(`/customers/by-user-id/${userId}`);
-      this.customerService.getCustomerByUserId(userId)
-      return response;
-    }catch (err){
-      console.log(" error-message in get-customer-by-user-id, error : ", err);
-      throw new Error("Something went wrong. Please try again later.")
-    }
-  }
-
 }

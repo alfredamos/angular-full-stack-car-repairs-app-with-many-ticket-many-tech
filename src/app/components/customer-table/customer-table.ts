@@ -1,7 +1,6 @@
 import {Component, input, output} from '@angular/core';
+import {DatePipe} from "@angular/common";
 import {CustomerResponse} from "../../../models/customerResp.model";
-import {formattedDate} from "../../utils/formattedDate";
-import {stringToDate} from "../../utils/stringDate";
 import {RouterLink} from "@angular/router";
 import {NgOptimizedImage} from "@angular/common";
 
@@ -9,7 +8,8 @@ import {NgOptimizedImage} from "@angular/common";
   selector: 'app-customer-table',
   imports: [
     RouterLink,
-    NgOptimizedImage
+    NgOptimizedImage,
+    DatePipe
   ],
   templateUrl: './customer-table.html',
   styleUrl: './customer-table.css',
@@ -23,6 +23,4 @@ export class CustomerTable {
     this.onChangeStatus.emit(id);
   }
 
-  protected readonly formattedDate = formattedDate;
-  protected readonly stringToDate = stringToDate;
 }

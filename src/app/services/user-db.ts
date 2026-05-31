@@ -21,16 +21,4 @@ export class UserDb {
     }
 
   }
-
-  async getUserById(id: string) {
-    try {
-      const response = await this.apiClient.get<UserDto>(`/users/${id}`);
-      this.userService.getUserById(id)
-      return response;
-    }catch (err){
-      console.log(" error-message in get-user-by-id, error : ", err);
-      throw new Error("Something went wrong. Please try again later.")
-    }
-
-  }
 }

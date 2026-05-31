@@ -12,14 +12,21 @@ import {CustomerTable} from "../../../components/customer-table/customer-table";
     ],
     template: `
         <app-customer-table
-                [customers]="customers.value() || []"
+                [customers]="customers.value()"
                 (onChangeStatus)="changeCustomerStatus($event)"
         />
     `
 })
 export default class CustomerByUserIdPage {
     userId = input.required<string>();
-    customers = httpResource<CustomerResponse[]>(() => `/api/customers/by-user-id/${this.userId()}`);
+    customers = httpResource(() => `/api/customers/by-user-id/${this.userId()}`,{
+        defaultValue: [],
+        parse: (value: unknown) => {
+            const customers = value as CustomerResponse[];
+            this.customerService.updateCustomers(customers);
+            return customers;
+        },
+    });
 
     customerDb = inject(CustomerDb);
     customerService = inject(CustomerService);

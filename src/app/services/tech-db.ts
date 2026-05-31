@@ -48,39 +48,4 @@ export class TechDb {
     }
   }
 
-  async getTechnicianById(id: string) {
-    try {
-      const response = await this.apiClient.get<TechnicianResponse>(`/technicians/${id}`);
-      this.techService.getTechById(id)
-
-      return response;
-    }catch (err){
-      console.log(" error-message in get-technician-by-id, error : ", err);
-      throw new Error("Something went wrong. Please try again later.")
-    }
-  }
-
-  async getTechniciansBySpecialty(specialty: string) {
-    try {
-      const response = await this.apiClient.get<TechnicianResponse[]>(`/technicians/by-specialty/${specialty}`);
-      this.techService.updateTechs(response);
-
-      return response;
-    }catch (err){
-      console.log(" error-message in get-technician-by-id, error : ", err);
-      throw new Error("Something went wrong. Please try again later.")
-    }
-  }
-
-  async getTechnicianByUserId(userId: string) {
-    try {
-      const response = this.apiClient.get<TechnicianResponse>(`/technicians/by-user-id/${userId}`);
-      this.techService.getTechByUserId(userId);
-
-      return response;
-    }catch (err){
-      console.log(" error-message in get-technician-by-id, error : ", err);
-      throw new Error("Something went wrong. Please try again later.")
-    }
-  }
 }

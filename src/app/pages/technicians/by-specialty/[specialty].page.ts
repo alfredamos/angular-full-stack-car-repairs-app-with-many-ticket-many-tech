@@ -1,10 +1,21 @@
-import {Component} from "@angular/core";
+import {Component, input} from "@angular/core";
+import {TechnicianTable} from "../../../components/technician-table/technician-table";
+import {httpResource} from "@angular/common/http";
+import {TechnicianResponse} from "../../../../models/technicianResp.model";
 
 @Component({
     selector: 'app-technicians-by-specialty',
-    imports: [],
+    imports: [TechnicianTable],
     template: `
-    <div>Technicians By Specialty</div>
+        <app-technician-table
+                [technicians]="technicians.value()"
+        />
     `
 })
-export default class TechniciansBySpecialty {}
+export default class TechniciansBySpecialty {
+    specialty = input.required<string>();
+
+    technicians = httpResource<TechnicianResponse[]>(() => `/api/technicians/by-specialty/${this.specialty()}`,{
+        defaultValue: []
+    })
+}

@@ -39,32 +39,4 @@ export class AssignedTicketDb {
     return response;
   }
 
-  async getAssignedTicketById(techId: string, ticketId: string) {
-    const response = await this.apiClient.get<AssignedTicketResponse>(`/assign-tickets/${techId}/${ticketId}`);
-    this.assignedTickets.getTicketById(techId, ticketId);
-
-    return response;
-  }
-
-  async getAssignedTicketsByStatus(status: string) {
-    const response = await this.apiClient.get<AssignedTicketResponse[]>(`/assign-tickets/by-status/${status}`);
-    this.assignedTickets.updateTickets(response);
-
-    return response;
-  }
-
-  async getAssignedTicketsByTechId(techId: string) {
-    const response = await this.apiClient.get<AssignedTicketResponse[]>(`/assign-tickets/by-tech-id/${techId}`);
-    this.assignedTickets.updateTickets(response);
-
-    return response;
-  }
-
-  async getAssignedTicketsByTicketId(ticketId: string) {
-    const response = await this.apiClient.get<AssignedTicketResponse[]>(`/assign-tickets/by-ticket-id/${ticketId}`);
-    this.assignedTickets.updateTickets(response);
-
-    return response;
-  }
-
 }

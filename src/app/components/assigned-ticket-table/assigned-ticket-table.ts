@@ -1,14 +1,14 @@
 import {Component, inject, input, output} from '@angular/core';
+import {DatePipe} from "@angular/common";
 import {AuthService} from "../../services/auth-service";
 import {AssignedTicketResponse} from "../../../models/assignedTicketResponse.model";
 import {RouterLink} from "@angular/router";
-import {formattedDate} from "../../utils/formattedDate";
-import {stringToDate} from "../../utils/stringDate";
 
 @Component({
   selector: 'app-assigned-ticket-table',
   imports: [
-    RouterLink
+    RouterLink,
+      DatePipe
   ],
   templateUrl: './assigned-ticket-table.html',
   styleUrl: './assigned-ticket-table.css',
@@ -23,6 +23,4 @@ export class AssignedTicketTable {
     this.onChangeTicketStatus.emit({techId, ticketId});
   }
 
-  protected readonly formattedDate = formattedDate;
-  protected readonly stringToDate = stringToDate;
 }

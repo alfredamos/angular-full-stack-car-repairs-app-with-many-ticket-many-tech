@@ -47,7 +47,7 @@
                         <td class="px-2 align-top">{{ticket.status}}</td>
                         <td class="px-2 align-top">{{ticket.completed}}</td>
                         <td class="px-2 align-top">{{ticket.assignBy}}</td>
-                        <td class="px-2 align-top">{{formattedDate(stringToDate(ticket.assignAt))}}</td>
+                        <td class="px-2 align-top">{{ticket.assignAt | date }}</td>
                         <td class="px-2 align-top">{{ticket.customerName}}</td>
                         <td class="px-2 align-top">{{ticket.customerEmail}}</td>
                         <td class="px-2 align-top">{{ticket.customerPhone}}</td>

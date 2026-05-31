@@ -49,16 +49,6 @@ export class AuthDb {
 
   }
 
-  async getCurrentUser(){
-    try {
-      return await this.apiClient.get<UserDto>('/auth/me')
-    }catch (err){
-      console.log(" error-message in get-current-user, error : ", err);
-      throw new Error("Something went wrong. Please try again later.")
-    }
-
-  }
-
   async loginUser(payload: LoginUser) {
     try {
       const response = await this.apiClient.post<UserSession>('/auth/login', payload);

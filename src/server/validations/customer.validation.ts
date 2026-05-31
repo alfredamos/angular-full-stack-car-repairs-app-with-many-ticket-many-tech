@@ -20,7 +20,7 @@ export type CustomerCreate = z.infer<typeof customerCreateSchema>
 
 
 export const customerEditSchema = z.object({
-    id: z.string().optional(),
+    id: z.string(),
     active: z.boolean().optional(),
     address: z.string().min(1, { message: "Name cannot be empty." }),
     userId: z.string().optional(),

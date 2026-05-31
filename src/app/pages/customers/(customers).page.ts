@@ -10,14 +10,24 @@ import {httpResource} from "@angular/common/http";
     imports: [CustomerTable],
     template: `
        <app-customer-table
-           [customers]="customers.value() || []"
+           [customers]="customers.value()"
            (onChangeStatus)="changeCustomerStatus($event)"
        />
     `,
     standalone: true
 })
 export default class CustomersPage{
-    customers = httpResource<CustomerResponse[]>(() => '/api/customers');
+    defaultValue = new CustomerResponse();
+
+    customers =  httpResource(() => '/api/customers', {
+        defaultValue: [],
+        parse: (value: unknown) => {
+            const customers = value as CustomerResponse[];
+            this.customerService.updateCustomers(customers);
+            return customers;
+        },
+    });
+
 
     customerDb = inject(CustomerDb);
     customerService = inject(CustomerService);

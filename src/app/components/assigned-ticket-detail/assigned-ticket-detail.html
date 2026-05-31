@@ -1,0 +1,113 @@
+<div
+        class="flex flex-col max-w-sm mx-auto my-auto mt-10 ring-2 ring-gray-300 dark:text-gray-400 dark:ring-gray-600 p-2 rounded-t-md mb-10 shadow-xl"
+>
+    <div class="flex items-center justify-between">
+        <div class="flex-col items-center">
+            <p class="text-sm text-start font-bold">Customer</p>
+            <div class="flex flex-col items-center md:flex-row md:justify-between m-1 gap-2">
+                <img [src]="ticket().customerImage" [alt]="ticket().customerName" class="rounded-full h-15 w-15" />
+                <p class="text-sm">{{ ticket().customerName }}</p>
+            </div>
+        </div>
+        <div class="flex-col items-center">
+            <p class="text-sm text-start font-bold">Technician</p>
+            <div class="flex flex-col items-center md:flex-row md:justify-between m-1 gap-2">
+                <img [src]="ticket().techImage" [alt]="ticket().techName" class="rounded-full h-15 w-15" />
+                <p class="text-sm">{{ ticket().techName }}</p>
+            </div>
+        </div>
+    </div>
+    <hr class="h-px my-4 bg-gray-200 border-0" />
+    <div class="w-full">
+        <div class="">
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Title:</span>
+                <span class="text-start">{{ ticket().ticketTitle }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Completed:</span>
+                <span class="text-start">{{ ticket().completed ? 'Yes' : 'No' }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Status:</span>
+                <span class="text-start">{{ ticket().status}}</span>
+            </p>
+            <p class="flex flex-col mt-2 mb-2">
+                <span class="text-sm font-semibold">Notes</span>
+                <span class="break-words">{{ ticket().ticketNotes }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Customer Email</span>
+                <span class="text-start">{{ ticket().customerEmail }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Customer Phone</span>
+                <span class="text-start">{{ ticket().customerPhone }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Customer Address</span>
+                <span class="text-start">{{ ticket().customerAddress }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Tech Email</span>
+                <span class="text-start">{{ ticket().techEmail }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Tech Phone</span>
+                <span class="text-start">{{ ticket().techPhone }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Tech Speciality</span>
+                <span class="text-start">{{ ticket().techSpecialty }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Assigned By</span>
+                <span class="text-start">{{ ticket().assignBy }}</span>
+            </p>
+            <p class="text-sm mt-2 mb-2 flex items-center justify-between">
+                <span class="font-semibold">Assigned At</span>
+                <span class="text-start">{{ ticket().assignAt | date }}</span>
+            </p>
+        </div>
+        <hr class="h-px my-4 bg-gray-200 border-0" />
+        <div class="flex flex-col items-center gap-2 md:flex-row md:justify-between h-full mb-5 mt-5">
+            <a
+                    [routerLink]="`${isAdmin() ? '/assign-tickets' : `/assign-tickets/by-tech-id/${ticket().techId}`}`"
+                    ngClass="{ 'md:w-full': !props?.isAdmin, 'md:w-1/3': props?.isAdmin }"
+                    class="px-2 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold w-full md:w-1/3 text-center rounded-md"
+            >Back</a
+            >
+            @if(isAdmin()) {
+                <button
+                        (click)="openModal()"
+                        class="px-2 py-1 bg-white text-rose-900 border border-rose-900 hover:bg-rose-900 hover:text-white font-bold w-full md:w-1/3 text-center rounded-md"
+                        ngClass="{ 'md:w-1/2': !props?.isAdmin, 'md:w-1/3': props?.isAdmin }"
+                >
+                    Delete
+                </button>
+                <a
+                        [routerLink]="`/assign-tickets/${ticket().techId}/${ticket().ticketId}/edit`"
+                        class="px-2 py-1 bg-white text-yellow-900 border border-yellow-900 hover:bg-yellow-900 hover:text-white font-bold w-full md:w-1/3 text-center rounded-md"
+                        ngClass="{ 'md:w-1/2': !props?.isAdmin, 'md:w-1/3': props?.isAdmin }"
+                >Edit</a
+                >
+            }
+        </div>
+    </div>
+</div>
+
+<app-modal-dialog
+        [title]="'Delete Ticket Confirmation!'"
+        [isOpen]="isModalOpen()"
+        (click)="closeModal()"
+>
+    <p class="text-2xl leading-relaxed text-gray-500 dark:text-gray-400">
+        Do you really want to delete maintenance job : {{ ticket()?.ticketTitle }} assigned to : {{ ticket()?.techName}}?
+    </p>
+    <button
+            (click)="deleteAssignedTicket()"
+            class="mt-4 px-4 py-2 border border-rose-900 bg-rose-900 text-white hover:bg-white hover:text-rose-900 font-bold rounded"
+    >
+        Confirm
+    </button>
+</app-modal-dialog>

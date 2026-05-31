@@ -12,13 +12,20 @@ import { httpResource } from '@angular/common/http';
     imports: [UsersTable],
     template: `
         <app-users-table
-                [users]="users.value() || []"
+                [users]="users.value()"
                 (onChangeRole)="changeUserRole($event)"
         />`,
     standalone: true
 })
 export default class UsersPage {
-    users = httpResource<UserDto[]>(() => '/api/users')
+    users = httpResource<UserDto[]>(() => '/api/users', {
+        defaultValue: [],
+        parse: (value: unknown) => {
+            const users = value as UserDto[];
+            this.userService.updateUsers(users);
+            return users;
+        }
+    })
 
     userService = inject(UserService);
     authDb = inject(AuthDb);

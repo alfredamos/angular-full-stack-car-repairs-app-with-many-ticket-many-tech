@@ -8,11 +8,13 @@ import {httpResource} from "@angular/common/http";
     imports: [TechnicianTable],
     template: `
     <app-technician-table
-        [technicians]="technicians.value() || []"       
+        [technicians]="technicians.value()"       
     />
     `,
     standalone: true
 })
 export default class TechniciansPage{
-    technicians = httpResource<TechnicianResponse[]>(() => '/api/technicians');
+    technicians = httpResource<TechnicianResponse[]>(() => '/api/technicians',{
+        defaultValue: [],
+    });
 }

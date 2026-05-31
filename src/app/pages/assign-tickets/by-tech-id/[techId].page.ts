@@ -12,17 +12,25 @@ import {AssignedTicketTable} from "../../../components/assigned-ticket-table/ass
     ],
     template: `
         <app-assigned-ticket-table
-                [tickets]="tickets.value() || []"
+                [tickets]="tickets.value()"
                 (onChangeTicketStatus)="changeTicketStatus($event)"
         />
     `
 })
 export default class AssignedTicketsByTechIdPage {
     techId = input.required<string>();
-    tickets = httpResource<AssignedTicketResponse[]>(() => `/api/assign-tickets/by-tech-id/${this.techId()}`)
 
     ticketDb = inject(AssignedTicketDb);
     ticketService = inject(AssignedTicketService);
+
+    tickets = httpResource(() => `/api/assign-tickets/by-tech-id/${this.techId()}`,{
+        defaultValue: [],
+        parse: (value) => {
+            const tickets = value as AssignedTicketResponse[];
+            this.ticketService.updateTickets(tickets);
+            return tickets;
+        }
+    })
 
     async changeTicketStatus(ticketId: { techId: string; ticketId: string }) {
         await this.ticketDb.changeAssignedTicketStatus(ticketId.techId, ticketId.ticketId);

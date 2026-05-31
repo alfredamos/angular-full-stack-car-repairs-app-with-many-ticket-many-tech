@@ -10,16 +10,23 @@ import {httpResource} from "@angular/common/http";
     imports: [AssignedTicketTable],
     template: `
     <app-assigned-ticket-table
-        [tickets]="tickets.value() || []" 
+        [tickets]="tickets.value()" 
         (onChangeTicketStatus)="changeTicketStatus($event)"
     />
   `,
 })
 export default class AssignTicketsPage {
-    tickets = httpResource<AssignedTicketResponse[]>(() => '/api/assign-tickets')
-
     ticketDb = inject(AssignedTicketDb);
     ticketService = inject(AssignedTicketService);
+
+    tickets = httpResource(() => '/api/assign-tickets',{
+        defaultValue: [],
+        parse: (value) => {
+            const tickets = value as AssignedTicketResponse[];
+            this.ticketService.updateTickets(tickets);
+            return tickets;
+        }
+    })
 
     async changeTicketStatus(ticketId: { techId: string; ticketId: string }) {
         await this.ticketDb.changeAssignedTicketStatus(ticketId.techId, ticketId.ticketId);

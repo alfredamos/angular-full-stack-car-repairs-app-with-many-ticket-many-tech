@@ -1,8 +1,6 @@
-import {Component, inject, OnInit, signal} from "@angular/core";
+import {Component} from "@angular/core";
 import {TicketTable} from "../../components/ticket-table/ticket-table";
 import {TicketResponse} from "../../../models/ticketResponse.model";
-import {TicketService} from "../../services/ticket-service";
-import {TicketDb} from "../../services/ticket-db";
 import {httpResource} from "@angular/common/http";
 
 @Component({
@@ -10,12 +8,14 @@ import {httpResource} from "@angular/common/http";
     imports: [TicketTable],
     template: `
     <app-ticket-table
-        [tickets]="tickets.value() || []"       
+        [tickets]="tickets.value()"       
     />
     `,
     standalone: true
 })
 export default class TicketsPage{
-    tickets = httpResource<TicketResponse[]>(() => '/api/tickets');
+    tickets = httpResource<TicketResponse[]>(() => '/api/tickets',{
+        defaultValue: [],
+    });
 
 }

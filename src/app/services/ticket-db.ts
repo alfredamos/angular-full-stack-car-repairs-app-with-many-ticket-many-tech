@@ -47,27 +47,4 @@ export class TicketDb {
     }
   }
 
-  async getTicketById(id: string) {
-    try {
-      const response = await this.apiClient.get<TicketResponse>(`/tickets/${id}`);
-      this.ticketService.getTicketById(id);
-
-      return response;
-    }catch (err){
-      console.log(" error-message in get-ticket-by-id, error : ", err);
-      throw new Error("Something went wrong. Please try again later.")
-    }
-  }
-
-  async getTicketsByCustomerId(customerId: string) {
-    try {
-      const response = await this.apiClient.get<TicketResponse[]>(`/tickets/by-customer-id/${customerId}`);
-      this.ticketService.getTicketsByCustomerId(customerId);
-
-      return response;
-    }catch (err){
-      console.log(" error-message in get-tickets-by-customer-id, error : ", err);
-      throw new Error("Something went wrong. Please try again later.")
-    }
-  }
 }
