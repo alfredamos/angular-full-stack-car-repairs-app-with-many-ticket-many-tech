@@ -49,7 +49,7 @@
                         <td class="px-2 align-top">{{tech.email}}</td>
                         <td class="px-2 align-top">{{tech.phone}}</td>
                         <td class="px-2 align-top">
-                            {{formattedDate(stringToDate(tech.dateOfBirth))}}
+                            {{tech.dateOfBirth | date}}
                         </td>
                         <td class="px-2 align-top">
                             {{tech.specialty}}

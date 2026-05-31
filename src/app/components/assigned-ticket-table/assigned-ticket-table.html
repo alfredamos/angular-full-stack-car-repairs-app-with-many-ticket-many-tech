@@ -1,7 +1,7 @@
 @if (tickets().length === 0) {
     <div class="flex justify-between items-center mx-20 mt-5">
         <span class="font-bold">Add New Ticket</span>
-        <a class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-lg" routerLink="/tickets/add">Add</a>
+        <a class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-lg" routerLink="/assign-tickets/add">Add</a>
     </div>
     <div class="h-dvh flex justify-center items-center">
         <h1 class="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">There are no tickets to display at this time!</h1>
@@ -14,7 +14,7 @@
         @if (authService.isAdmin()){
             <div class="flex justify-between items-center">
                 <span class="font-bold">Add New Ticket</span>
-                <a class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-lg" routerLink="/tickets/add">Add</a>
+                <a class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-lg" routerLink="/assign-tickets/add">Add</a>
             </div>
             <hr class="h-px my-4 bg-gray-200 border-0"/>
         }
