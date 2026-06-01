@@ -8,7 +8,7 @@
         <label for="userId" class="text-base">User</label>
         <select class="w-full max-w-xs ring-1 ring-gray-300 rounded-md" [formField]="techCreateForm.userId">
             <option>Select User</option>
-            @for (user of users; track user.id) {
+            @for (user of users(); track user.id) {
                 <option [value]="user.id" [id]="user.id">{{user.name}}</option>
             }
         </select>

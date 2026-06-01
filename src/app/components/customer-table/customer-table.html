@@ -1,20 +1,21 @@
 @if (customers().length === 0) {
-    <div class="flex justify-between items-center m-5">
-        <span class="font-bold">Add New Customer</span>
+    <div class="flex justify-between items-center mt-5">
+        <span class="font-bold">Add New User</span>
         <button class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white rounded-lg">
-            <a routerLink="/customers/add" class="font-bold">Add</a>
+            <a routerLink="/signup" class="font-bold">Add</a>
         </button>
     </div>
     <div class="h-dvh flex justify-center items-center">
         <h1 class="font-bold p-10 bg-red-200 ring-1 ring-red-200 rounded-lg shadow-lg text-black">There are no users to display at this time!</h1>
     </div>
 }@else{
+
     <div class="overflow-x-auto overflow-y-auto mt-5 max-w-sm md:max-w-2xl mx-auto">
         <hr class="h-px my-4 bg-gray-200 border-0"/>
-        <h4 class="text-center text-xl font-bold">List of Customers</h4>
+        <h4 class="text-center text-xl font-bold">List of customers</h4>
         <hr class="h-px my-4 bg-gray-200 border-0"/>
         <div class="flex justify-between items-center">
-            <span class="font-bold">Add New Customer</span>
+            <span class="font-bold">Add New customer</span>
             <button class="flex-end px-4 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white rounded-lg">
                 <a routerLink="/customers/add" class="font-bold">Add</a>
             </button>
@@ -24,7 +25,7 @@
             <thead>
             <tr>
                 <th class="px-2 text-left">Image</th>
-                <th class="px-2 text-left">Name</th>
+                <th class="px-2 text-left">name</th>
                 <th class="px-2 text-left">Email</th>
                 <th class="px-2 text-left">Phone</th>
                 <th class="px-2 text-left">Address</th>
@@ -52,25 +53,24 @@
                         <td class="px-2 align-top">{{customer.name}}</td>
                         <td class="px-2 align-top">{{customer.email}}</td>
                         <td class="px-2 align-top">{{customer.phone}}</td>
-                        <td class="px-2 align-top">{{customer.address}}</td>
+                        <td class="px-2 align-top w-max whitespace-nowrap">{{customer.address}}</td>
                         <td class="px-2 align-top">{{customer.gender}}</td>
-                        <td class="px-2 align-top">{{ customer.dateOfBirth | date }}</td>
-                        <td class="px-2 align-top">{{customer.active ? "Active" : "Inactive" }}</td>
-                        <td class="px-2 align-top">{{customer.notes}}</td>
+                        <td class="px-2 align-top">{{customer.dateOfBirth | date}}</td>
+                        <td class="px-2 align-top">{{customer.active? "Active" : "Inactive"}}</td>
+                        <td class="px-2 align-top w-max whitespace-nowrap">{{customer.notes}}</td>
                         <td class="flex items-center justify-center gap-2 px-2 align-middle">
-                            <a [routerLink]="`/customers/${customer.id}/detail`" class="px-2 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-md">
+                            <a [routerLink]="`/users/${customer.id}/detail`" class="px-2 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-md">
                                 Detail
                             </a>
-                            <a [routerLink]="`/customers/${customer.id}/edit`" class="px-2 py-1 bg-white text-yellow-900 border border-yellow-900 hover:bg-yellow-900 hover:text-white font-bold rounded-md">
-                                Edit
-                            </a>
-                            <a [routerLink]="`/customers/${customer.id}/detail`" class="px-2 py-1 bg-white text-rose-900 border border-rose-900 hover:bg-rose-900 hover:text-white font-bold rounded-md">
+                            <a [routerLink]="`/users/${customer.id}/detail`" class="px-2 py-1 bg-white text-rose-900 border border-rose-900 hover:bg-rose-900 hover:text-white font-bold rounded-md">
                                 Delete
                             </a>
                             <button (click)="changeCustomerStatus(customer.id)" class="flex items-center px-2 py-1 bg-white text-green-900 border border-green-900 hover:bg-green-900 hover:text-white font-bold rounded-md">
-                                {{customer.active ? "Inactive?" : "Active?"}}
+                                {{ customer?.active ? 'Inactive?' : 'Active?' }}
                             </button>
-                            <a [routerLink]="`/tickets/by-user-id/${customer.userId}`" class="flex items-center px-2 py-1 bg-white text-gray-900 border border-gray-900 hover:bg-gray-900 hover:text-white font-bold rounded-md">Tickets</a>
+                            <a [routerLink]="`/tickets/by-user-id/${customer.id}`" class="px-2 py-1 bg-white text-gray-900 border border-gray-900 hover:bg-gray-900 hover:text-white font-bold rounded-md">
+                                Tickets
+                            </a>
                         </td>
                     </tr>
                 }
@@ -78,7 +78,6 @@
         </table>
         <hr class="h-px my-8 bg-gray-200 border-0"/>
     </div>
-
 }
 
 

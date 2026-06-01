@@ -1,4 +1,4 @@
-import {inject, Injectable, signal} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {TechnicianResponse} from "../../models/technicianResp.model";
 import {ApiHttpClientService} from "./api-client-service";
 import {TechService} from "./tech-service";

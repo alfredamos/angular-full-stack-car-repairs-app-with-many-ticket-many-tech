@@ -1,10 +1,10 @@
-import {Component, OnInit, output, signal} from '@angular/core';
+import {Component, input, OnInit, output, signal} from '@angular/core';
 import {TechnicianCreate as Tech} from "../../../server/validations/technician.validation";
 import {form, FormField, required} from "@angular/forms/signals";
 import {UserDto} from "../../../models/userDto.model";
 
 @Component({
-  selector: 'app-technician-create',
+  selector: 'app-tech-create',
   imports: [
     FormField
   ],
@@ -12,7 +12,7 @@ import {UserDto} from "../../../models/userDto.model";
   styleUrl: './technician-create.css',
 })
 export class TechnicianCreate implements OnInit{
-  users = signal<UserDto[]>([]);
+  users = input.required<UserDto[]>();
 
   onCreateTech = output<Tech>();
   onBackToList = output<void>();

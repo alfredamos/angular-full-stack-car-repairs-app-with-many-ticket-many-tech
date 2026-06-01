@@ -1,9 +1,6 @@
 import {computed, inject, Injectable, signal} from '@angular/core';
 import {UserSession} from "../../models/UserSession.model";
 import {emptyUserSession} from "../../server/utils/emptyUserSession";
-//import * as ls from "local-storage"
-import {UserDto} from "../../models/userDto.model";
-import {AuthParam} from "../../server/utils/authParam.util";
 import {LocalStorageParam} from "../utils/localStorageParam.util";
 import {BrowserStorageService} from "./browser-storage-service";
 import {CustomerService} from "./customer-service";

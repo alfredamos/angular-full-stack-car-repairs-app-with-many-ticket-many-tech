@@ -3,7 +3,7 @@ import {TechnicianCreate as Tech} from "../../../server/validations/technician.v
 import {form, FormField, required} from "@angular/forms/signals";
 
 @Component({
-  selector: 'app-technician-create-with-user',
+  selector: 'app-tech-create-with-user',
   imports: [
     FormField
   ],
