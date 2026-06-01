@@ -59,10 +59,13 @@
                         <td class="px-2 align-top">{{customer.active? "Active" : "Inactive"}}</td>
                         <td class="px-2 align-top w-max whitespace-nowrap">{{customer.notes}}</td>
                         <td class="flex items-center justify-center gap-2 px-2 align-middle">
-                            <a [routerLink]="`/users/${customer.id}/detail`" class="px-2 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-md">
+                            <a [routerLink]="`/customers/${customer.id}/edit`" class="px-2 py-1 bg-white text-yellow-900 border border-yellow-900 hover:bg-yellow-900 hover:text-white font-bold rounded-md">
+                                Edit
+                            </a>
+                            <a [routerLink]="`/customers/${customer.id}/detail`" class="px-2 py-1 bg-white text-indigo-900 border border-indigo-900 hover:bg-indigo-900 hover:text-white font-bold rounded-md">
                                 Detail
                             </a>
-                            <a [routerLink]="`/users/${customer.id}/detail`" class="px-2 py-1 bg-white text-rose-900 border border-rose-900 hover:bg-rose-900 hover:text-white font-bold rounded-md">
+                            <a [routerLink]="`/customers/${customer.id}/detail`" class="px-2 py-1 bg-white text-rose-900 border border-rose-900 hover:bg-rose-900 hover:text-white font-bold rounded-md">
                                 Delete
                             </a>
                             <button (click)="changeCustomerStatus(customer.id)" class="flex items-center px-2 py-1 bg-white text-green-900 border border-green-900 hover:bg-green-900 hover:text-white font-bold rounded-md">

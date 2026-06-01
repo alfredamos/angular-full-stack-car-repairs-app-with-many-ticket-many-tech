@@ -8,7 +8,7 @@ export class CustomerResponse {
     id!: string;
     address!: string;
     active!: boolean;
-    notes?: string;
+    notes!: string;
     userId!: string;
     name!: string;
     email!: string;
