@@ -2,17 +2,17 @@
     <h4 class="text-center text-xl font-bold mb-4">Ticket Create Form</h4>
     <div class="mb-3 flex-col items-center">
         <label for="title" class="text-base">Title</label>
-        <input class="w-full max-w-xs ring-1 ring-gray-300 rounded-md" type="text" id="email" [formField]="ticketCreateForm.title" />
+        <input class="w-full max-w-xs ring-1 ring-gray-300 rounded-md" type="text" id="title" [formField]="ticketCreateForm.title" />
     </div>
     <div class="mb-3 flex-col items-center">
-        <label for="description" class="text-base">password</label>
-        <textarea class="w-full max-w-xs ring-1 ring-gray-300 rounded-md" type="text" id="password" [formField]="ticketCreateForm.description"></textarea>
+        <label for="description" class="text-base">Description</label>
+        <textarea class="w-full max-w-xs ring-1 ring-gray-300 rounded-md" type="text" id="description" [formField]="ticketCreateForm.description"></textarea>
     </div>
     <div class="mb-3 flex-col items-center">
         <label for="customerId" class="text-base">Customer</label>
         <select class="w-full max-w-xs ring-1 ring-gray-300 rounded-md" [formField]="ticketCreateForm.customerId">
             <option>Select Customer</option>
-            @for (customer of customers; track customer.id) {
+            @for (customer of customers(); track customer.id) {
                 <option [value]="customer.id" [id]="customer.id">{{customer.name}}</option>
             }
         </select>

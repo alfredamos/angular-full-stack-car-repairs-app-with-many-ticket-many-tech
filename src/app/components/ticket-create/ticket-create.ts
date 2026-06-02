@@ -43,6 +43,4 @@ export class TicketCreate implements OnInit{
     this.onBackToList.emit();
   }
 
-
-
 }

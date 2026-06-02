@@ -1,12 +1,11 @@
 import {Component, inject, input, signal} from "@angular/core";
 import {EditCustomer} from "../../../components/edit-customer/edit-customer";
 import {CustomerEdit} from "../../../../server/validations/customer.validation";
-import {CustomerService} from "../../../services/customer-service";
 import {CustomerDb} from "../../../services/customer-db";
 import {httpResource} from "@angular/common/http";
 import {CustomerResponse} from "../../../../models/customerResp.model";
 import {Router} from "@angular/router";
-import {CustomerInputEdit} from "../../../../models/CustomerInputEdit";
+import {CustomerInputEdit} from "../../../../models/customerInputEdit.model";
 
 @Component({
     selector: 'app-customer-edit-page',
@@ -24,7 +23,6 @@ export default class CustomerEditPage {
     id = input.required<string>();
 
     customerDb = inject(CustomerDb);
-    customerService = inject(CustomerService);
     router = inject(Router);
 
     customer = httpResource(() => `/api/customers/${this.id()}`,{

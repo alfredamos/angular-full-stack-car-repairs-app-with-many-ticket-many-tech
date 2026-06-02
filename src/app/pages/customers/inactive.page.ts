@@ -16,13 +16,21 @@ import {httpResource} from "@angular/common/http";
     `
 })
 export default class InactiveCustomersPage{
-    customers = httpResource<CustomerResponse[]>(() => '/api/customers/all/inactive');
+    customerService = inject(CustomerService);
+
+    customers = httpResource(() => '/api/customers', {
+        defaultValue: [],
+        parse: (value) => {
+            const customers = value as CustomerResponse[];
+            this.customerService.updateCustomers(customers);
+            return customers.filter(customer => !customer.active);
+        }
+    });
 
     customerDb = inject(CustomerDb);
-    customerService = inject(CustomerService);
 
     async changeCustomerStatus(id: string) {
         await this.customerDb.changeCustomerStatus(id);
-        this.customers.set(this.customerService.customers());
+        this.customers.set(this.customerService.customers().filter(customer => !customer.active));
     }
 }

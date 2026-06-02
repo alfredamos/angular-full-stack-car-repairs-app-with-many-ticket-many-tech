@@ -49,6 +49,8 @@ class AssignedTicketService implements IAssignedTicketService {
         //----> Check for existence of assigned ticket.
         await this.getOneAssignedTicket(techId, ticketId);
 
+        request.completed = request.status !== Status.Open;
+
         //----> Update the assigned ticket.
         const updatedAssignedTicket = await prisma.assignedTicket.update({where: {techId_ticketId: {techId, ticketId}}, data: request, include: {ticket: {include: {customer: {include: {user: true}}}}, tech: {include: {user: true}}}});
 

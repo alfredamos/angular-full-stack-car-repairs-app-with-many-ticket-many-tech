@@ -10,11 +10,13 @@ import {TicketTable} from "../../../components/ticket-table/ticket-table";
     ],
     template: `
         <app-ticket-table
-                [tickets]="tickets.value() || []"
+                [tickets]="tickets.value()"
         />`,
 })
 export default class TicketsByUserIdPage {
     userId = input.required<string>();
 
-    tickets = httpResource<TicketResponse[]>(() => `/api/tickets/by-user-id/${this.userId()}`);
+    tickets = httpResource<TicketResponse[]>(() => `/api/tickets/by-user-id/${this.userId()}`, {
+        defaultValue: [],
+    });
 }

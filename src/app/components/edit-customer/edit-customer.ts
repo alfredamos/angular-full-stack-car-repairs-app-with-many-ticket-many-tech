@@ -1,7 +1,7 @@
 import {Component, input, OnChanges, OnInit, output, signal, SimpleChanges} from '@angular/core';
 import {form, FormField, required} from "@angular/forms/signals";
 import {CustomerResponse} from "../../../models/customerResp.model";
-import {CustomerInputEdit} from "../../../models/CustomerInputEdit";
+import {CustomerInputEdit} from "../../../models/customerInputEdit.model";
 
 @Component({
   selector: 'app-edit-customer',
