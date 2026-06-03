@@ -35,7 +35,7 @@ export const signupUserSchema = z.object({
     image: z.string().min(3, {message: "Image must be provided"}),
     gender: z.enum(Gender),
     role: z.enum(Role).optional(),
-    userType: z.enum(UserType).optional(),
+    userType: z.enum(UserType),
     dateOfBirth: z.string().min(3, {message: "Date of birth must be provided"}),
     password: z.string().min(3, {message: "Password must be provided"}),
     confirmPassword: z.string().min(3, {message: "Confirm Password must be provided"}),

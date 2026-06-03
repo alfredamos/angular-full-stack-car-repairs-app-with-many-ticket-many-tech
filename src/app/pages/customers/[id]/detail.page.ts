@@ -28,7 +28,7 @@ export default class CustomerDetailPage {
 
     customer = httpResource<CustomerResponse>(() => `/api/customers/${this.id()}`,{
         defaultValue: this.initialCustomer,
-    })
+    });
 
     customerDb = inject(CustomerDb);
     customerService = inject(CustomerService);

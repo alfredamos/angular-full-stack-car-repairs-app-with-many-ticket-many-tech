@@ -87,7 +87,7 @@ export class AuthDb {
 
   async signupUser(payload: SignupUser) {
     try {
-      return await this.apiClient.post<ResponseMessage>('/auth/signup', payload);
+      return await this.apiClient.post<UserDto>('/auth/signup', payload);
     }catch (err){
       console.log(" error-message in signup-user, error : ", err);
       throw new Error("Something went wrong. Please try again later.")

@@ -13,7 +13,7 @@ import {emptyUserDto} from "../../../models/emptyUserDto";
     imports: [EditProfileForm],
     template: `
     <app-edit-profile-form
-        [user]="user.value() || emptyUserDto" 
+        [user]="user.value()" 
         (onEditProfile)="submitEditProfileForm($event)"
         (onBackToList)="backToList()"
     />
@@ -21,7 +21,9 @@ import {emptyUserDto} from "../../../models/emptyUserDto";
     standalone: true
 })
 export default class EditProfilePage{
-   user = httpResource<UserDto>(() => '/api/auth/me');
+   user = httpResource<UserDto>(() => '/api/auth/me', {
+       defaultValue: emptyUserDto
+   });
 
    authDb = inject(AuthDb);
    authService = inject(AuthService);

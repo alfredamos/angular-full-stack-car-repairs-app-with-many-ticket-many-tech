@@ -14,7 +14,7 @@ import {AssignedTicketDb} from "../../../../services/assigned-ticket-db";
     <app-assigned-ticket-detail
           [isAdmin]="isAdmin()"
           [isModalOpen]="isModalOpen()"
-          [ticket]="ticket.value() || initialTicket"
+          [ticket]="ticket.value()"
           (onCloseModal)="closeModal()"
           (onDeleteAssignedTicket)="deleteAssignedTicket($event)"
           (onOpenModal)="openModal()"
@@ -27,9 +27,9 @@ export default class AssignedTicketDetailPage {
 
     isModalOpen = signal(false);
 
-    initialTicket = new AssignedTicketResponse()
-
-    ticket = httpResource<AssignedTicketResponse>(() => `/api/assign-tickets/${this.techId()}/${this.ticketId()}`);
+    ticket = httpResource<AssignedTicketResponse>(() => `/api/assign-tickets/${this.techId()}/${this.ticketId()}`, {
+        defaultValue: new AssignedTicketResponse(),
+    });
 
     ticketDb = inject(AssignedTicketDb);
     ticketService = inject(AssignedTicketService);

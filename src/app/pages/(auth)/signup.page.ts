@@ -3,6 +3,7 @@ import {SignupForm} from "../../components/auth/signup-form/signup-form";
 import {AuthDb} from "../../services/auth-db";
 import {Router} from "@angular/router";
 import {SignupUser} from "../../../server/validations/auth.validation";
+import {UserType} from "../../../models/UserType.model";
 
 @Component({
     selector: 'app-signup-page',
@@ -24,7 +25,7 @@ export default class SignupPage {
     }
 
     async signupSubmit(signupUser: SignupUser) {
-        await this.authDb.signupUser(signupUser);
-        await this.router.navigate(['/']);
+        const newUser = await this.authDb.signupUser(signupUser);
+        await this.router.navigate([`${newUser.userType === UserType.Customer ? `/customers/add/${newUser.id}` : `/technicians/add/${newUser.id}` }`]);
     }
 }

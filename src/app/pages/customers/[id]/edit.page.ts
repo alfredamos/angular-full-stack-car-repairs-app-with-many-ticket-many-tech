@@ -35,7 +35,7 @@ export default class CustomerEditPage {
             })
             return customer;
         }
-    })
+    });
 
     async backToList() {
         await this.router.navigate(['/customers']);

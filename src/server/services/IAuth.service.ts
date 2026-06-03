@@ -19,5 +19,5 @@ export interface IAuthService {
     loginUser(loginUser: LoginUser, event: H3Event): Promise<UserSession>;
     logoutUser(event: H3Event): Promise<UserSession>
     refreshUserToken(event: H3Event): Promise<UserSession>;
-    signupUser(signupUser: SignupUser): Promise<ResponseMessage>;
+    signupUser(signupUser: SignupUser): Promise<UserDto>;
 }

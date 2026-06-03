@@ -36,6 +36,7 @@ export class SignupForm {
     required(schemaPath.confirmPassword, {message: "Confirm Password is required"});
     required(schemaPath.password, {message: "Password is required"});
     required(schemaPath.phone, {message: "Phone is required"});
+    required(schemaPath.userType, {message: "Gender is required"});
   })
 
   onSubmit($event: Event) {

@@ -6,9 +6,6 @@ import {adminAuthorization} from "../../../utils/adminAuthorization";
 
 export default defineEventHandler(async (event) => {
     try {
-        //----> Check for admin role.
-        adminAuthorization(event);
-
         //----> Get the payload from the request body.
         const technician = await readValidatedBody(event, technicianCreateSchema.parse);
 
